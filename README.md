@@ -35,7 +35,7 @@ https://github.com/Lajbert - Lajos Rajna aka Lajbert, the author of original Mon
 https://github.com/Lajbert/MonolithEngine - small & lightweight 2D video game engine based on Monogame
 
 ## . 
-As is. No support.RnD only
+As is. No support. RnD only. DIY.
 
 ## .
 [m][e] 2024
