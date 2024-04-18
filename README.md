@@ -18,7 +18,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 
 ## Features / My experimentation(s)
 - Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
-- Not tweaked Monogame 3.8 library used (it reduces project suze, but so many UI stranges)
+- Not tweaked Monogame 3.8 library used (it reduces project size, but so many UI stranges)
 - On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start).
 
 ## Requirements
@@ -42,6 +42,8 @@ https://pixelfrog-assets.itch.io
 
 Link: https://lajbert.itch.io/platformer-demo
 
+## Known bugs
+If you decide to use PC Mode You may notice some game screen distortions. The problem that is IsMobile function always returns true... It must be fixed manually: replace true on false... and tweak SCALE_X and SCALE_Y to your own better values...  
 
 ## References
 
