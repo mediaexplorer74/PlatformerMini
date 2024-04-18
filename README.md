@@ -11,6 +11,8 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 ## Screenshot(s)
 ![UWP](Images/screenshot01.png)
 
+![UWP](Images/screenshot02.png)
+
 
 ## Features
 Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
