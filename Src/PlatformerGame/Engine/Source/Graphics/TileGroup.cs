@@ -23,14 +23,16 @@ namespace MonolithEngine
 
     public TileGroup(int width, int height)
     {
+            //RnD
             try
             {
                 this.renderTarget = new RenderTarget2D(TileGroup.GraphicsDevice,
-                    width,
+                    width <= 4000 ? width : 4000,
                     height,
                     false,
                     TileGroup.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                    DepthFormat.Depth24);
+                    DepthFormat.Depth24
+                    );
             }
             catch (Exception ex)
             {

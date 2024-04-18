@@ -11,7 +11,9 @@ This is my fork of some interesting (but archived) small & lightweight 2D video 
 
 ## Screenshot(s)
 
-![](Images/screenshot.png)
+![](Images/screenshot01.png)
+
+![](Images/screenshot02.png)
 
 ## A few words of author
 "In December 2020 (5 months as of writing this), I decided to start chasing my childhood dream to become a video game developer. I started my learning curve by developing my very own 2D video game engine and I'm still working on it with enthusiasm. Since the engine is nothing without a game, I was developing a small platformer game demo to test my work and have some feedback. 
