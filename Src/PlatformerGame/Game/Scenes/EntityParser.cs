@@ -184,7 +184,16 @@ namespace ForestPlatformerExample
 
                         if (field.Identifier == "forceFeildHeight")
                         {
-                            forceFeildHeight = (int)field.Value;
+                            try
+                            {
+                                forceFeildHeight = (int)field.Value;
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("[ex] EntytyParser - forceFeildHeight error: " + ex.Message);
+                                //PLAN B
+                                forceFeildHeight = 256;
+                            }
                         }
                     }
                     new Fan(scene, position, forceFeildHeight);

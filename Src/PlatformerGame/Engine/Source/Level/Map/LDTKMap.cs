@@ -75,7 +75,7 @@ namespace MonolithEngine
       {
         //RnD
         int pxWid = 1400;//1920;//(int) level2.PxWid;
-        int pxHei = 680;//720;//(int) level2.PxHei;
+        int pxHei = 800;//720;//(int) level2.PxHei;
 
         scene.SetWidth(pxWid);
         scene.SetHeight(pxHei);
