@@ -1,13 +1,5 @@
 # PlatformerMini (Monolith codename) - uwp branch
 
-
-url: https://github.com/mediaexplorer74/monolith/
-page_type: sample
-description: "Simple gameengine-based app accompanying a tutorial that teaches you the basics of game development in MonoGame."
-languages: csharp
-framework: uwp
-products: windows 10, windows 10 mobile 
-
 ## About 
 This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria :) This is my "UWP fork" of some interesting (but archived) small & lightweight 2D video game engine named MonolithEngine.
 
