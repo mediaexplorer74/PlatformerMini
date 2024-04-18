@@ -1,4 +1,4 @@
-# PlatformerMini (Monolith codename; MonoGame + MonolithEngine demo) - uwp branch
+# PlatformerMini (Monolith codename) - uwp branch
 
 
 url: https://github.com/mediaexplorer74/monolith/
