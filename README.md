@@ -13,7 +13,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 
 ![UWP, W11 Tiny](Images/screenshot02.png)
 
-![UWP, W10M Lumia 950](Images/screenshot02.png)
+![UWP, W10M Lumia 950](Images/screenshot03.png)
 
 
 ## Features / My experimentation(s)
