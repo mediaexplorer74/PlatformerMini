@@ -9,7 +9,7 @@ using MonolithEngine;
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class MobileButtonPanel

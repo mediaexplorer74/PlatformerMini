@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="ME.MonolithV1" Publisher="CN=Admin" Version="1.0.0.0" />
+  <Identity Name="ME.MonolithV1" Publisher="CN=mediaexplorer" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="4e065431-af4a-4132-8a80-eb18c64e4764" PhonePublisherId="40000045-6545-2031-0031-000280250004" />
   <Properties>
     <DisplayName>Monolith 1.0-alpha</DisplayName>

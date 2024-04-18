@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonolithEngine;
 using System;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class Spikes : Entity

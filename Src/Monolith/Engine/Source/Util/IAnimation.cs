@@ -6,7 +6,7 @@
 
 using Microsoft.Xna.Framework.Graphics;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public interface IAnimation

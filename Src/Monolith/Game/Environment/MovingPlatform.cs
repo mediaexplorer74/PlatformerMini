@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonolithEngine;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class MovingPlatform : PhysicalEntity

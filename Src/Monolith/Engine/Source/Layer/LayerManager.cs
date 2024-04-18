@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class LayerManager

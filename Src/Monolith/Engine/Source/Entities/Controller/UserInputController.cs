@@ -1,16 +1,14 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: MonolithEngine.UserInputController
+﻿// Type: MonolithEngine.UserInputController
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class UserInputController : IUpdatableComponent, IComponent

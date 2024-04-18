@@ -7,7 +7,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public abstract class AbstractTrigger : ITrigger, IComponent

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class Sprite : IComponent, IDrawableComponent

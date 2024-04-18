@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine.Experimental
 {
   public class Ray2DEmitter

@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class Entity : GameObject, IColliderEntity, IHasTrigger, IGameObject, IRayBlocker

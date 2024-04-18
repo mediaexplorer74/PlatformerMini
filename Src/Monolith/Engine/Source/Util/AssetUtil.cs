@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   internal class AssetUtil

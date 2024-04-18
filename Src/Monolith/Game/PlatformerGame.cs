@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using MonolithEngine;
 using System.IO;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   public class PlatformerGame : MonolithGame

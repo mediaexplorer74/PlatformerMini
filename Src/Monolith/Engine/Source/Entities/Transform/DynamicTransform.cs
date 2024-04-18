@@ -6,7 +6,7 @@
 
 using Microsoft.Xna.Framework;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   internal class DynamicTransform : StaticTransform

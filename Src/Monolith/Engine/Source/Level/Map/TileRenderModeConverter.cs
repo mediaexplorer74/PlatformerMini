@@ -7,7 +7,7 @@
 using Newtonsoft.Json;
 using System;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   internal class TileRenderModeConverter : JsonConverter

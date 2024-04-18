@@ -6,7 +6,7 @@
 
 using MonolithEngine;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class TrunkAIStateMachine : AIStateMachine<Trunk>

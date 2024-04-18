@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
     class EntityParser
@@ -57,7 +57,7 @@ namespace ForestPlatformerExample
                 }
                 else if (entity.Identifier.Equals("Spring"))
                 {
-                    float power = -1;
+                    int power = -1;
                     foreach (FieldInstance field in entity.FieldInstances)
                     {
                         if (field.Identifier == "power")
@@ -65,15 +65,16 @@ namespace ForestPlatformerExample
                             //RnD
                             try
                             {
-                                power = (float)field.Value;
+                                power = (int)field.Value;
                             }
-                            catch
+                            catch (Exception ex)
                             {
+                                Debug.WriteLine("[ex] power cast bug: " + ex.Message);
                                 power = 15;
                             }
                         }
                     }
-                    Spring spring = new Spring(scene, position, (int)Math.Round(power));
+                    Spring spring = new Spring(scene, position, (int)(power));
                 }
 
                 else if (entity.Identifier.Equals("Box"))
@@ -144,12 +145,13 @@ namespace ForestPlatformerExample
                         {
                             try
                             {
-                                speed = (int)Math.Round((double)field.Value);
+                                object v = field.Value;
+                                speed = (int)Math.Round((decimal)v);
                             }
                             catch (Exception ex)
                             {
                                 Debug.WriteLine("[ex] speed cast bug: " + ex.Message);
-                                speed = 1;
+                                speed = 0;//1;
                             }
                         }
                     }
@@ -190,7 +192,7 @@ namespace ForestPlatformerExample
                             }
                             catch (Exception ex)
                             {
-                                Debug.WriteLine("[ex] EntytyParser - forceFeildHeight error: " + ex.Message);
+                                Debug.WriteLine("[ex] EntityParser - forceFeildHeight error: " + ex.Message);
                                 //PLAN B
                                 forceFeildHeight = 256;
                             }
@@ -240,16 +242,16 @@ namespace ForestPlatformerExample
             }
 
 #if DEBUG
-            /*
-             * PhysicalEntity collisionTest = new PhysicalEntity(scene.LayerManager.EntityLayer, null, new Vector2(17, 37) * Config.GRID)
+            
+             PhysicalEntity collisionTest = new PhysicalEntity(scene.LayerManager.EntityLayer, null, new Vector2(17, 37) * Config.GRID)
              {
                  HasGravity = false
              };
-             collisionTest.SetSprite(Assets.CreateRectangle(64, Color.Yellow));
+              collisionTest.SetSprite(default);//(Assets.CreateRectangle(64, 64, Color.Yellow));
              collisionTest.AddTag("Mountable");
              //collisionTest.AddComponent(new BoxCollisionComponent(collisionTest, 32, 32, new Vector2(-16, -16)));
              collisionTest.AddComponent(new BoxCollisionComponent(collisionTest, 64, 64, Vector2.Zero));
-             (collisionTest.GetCollisionComponent() as BoxCollisionComponent).DEBUG_DISPLAY_COLLISION = true;*/
+             //(collisionTest.GetCollisionComponent() as BoxCollisionComponent).DEBUG_DISPLAY_COLLISION = true;
 #endif
 
         }

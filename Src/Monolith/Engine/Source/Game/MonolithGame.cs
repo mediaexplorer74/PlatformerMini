@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public abstract class MonolithGame : Game
@@ -38,7 +38,7 @@ namespace MonolithEngine
 
     public MonolithGame()//(MonolithEngine.Platform targetPlatform)
     {
-            MonolithGame.platform = Platform.UWP;//targetPlatform;
+      MonolithGame.platform = Platform.UWP;//targetPlatform;
       this.graphics = new GraphicsDeviceManager((Game) this);
       this.Content.RootDirectory = "Content";
       this.IsMouseVisible = true;
@@ -67,10 +67,14 @@ namespace MonolithEngine
       this.graphics.PreferredBackBufferHeight = VideoConfiguration.RESOLUTION_HEIGHT;
       this.graphics.IsFullScreen = VideoConfiguration.FULLSCREEN;
 
-      //RnD
-      Config.SCALE = !MonolithGame.Platform.IsMobile() 
-        ? (float) ((double) VideoConfiguration.RESOLUTION_WIDTH / /*1920.0*/ 1400 * 1.0/*2.0*/) 
-        : (float) ((double) VideoConfiguration.RESOLUTION_HEIGHT / /*1920.0*//*720.0*/ 680 * 1.0/*2.7999999523162842*/);
+       //RnD
+       Config.SCALE_X = (1 == 1)//!MonolithGame.Platform.IsMobile() 
+        ? (float) ((double) VideoConfiguration.RESOLUTION_WIDTH / 1920.0  * 1.4/*2.0*/)
+        : (float) ((double) VideoConfiguration.RESOLUTION_HEIGHT / 1920.0 * 2.5/*2.7999999523162842*/);
+
+       Config.SCALE_Y = (1 == 1)//!MonolithGame.Platform.IsMobile() 
+        ? (float)((double)VideoConfiguration.RESOLUTION_WIDTH / 1920.0 * 4.2/*2.0*/)
+        : (float)((double)VideoConfiguration.RESOLUTION_HEIGHT / 1920.0 * 3/*2.7999999523162842*/);
 
       try
       {

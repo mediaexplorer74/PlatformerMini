@@ -7,7 +7,7 @@
 using Microsoft.Xna.Framework;
 using MonolithEngine;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class TrunkAttackState : AIState<Trunk>

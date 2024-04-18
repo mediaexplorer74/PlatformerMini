@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public interface IColliderEntity : IHasTrigger, IGameObject
@@ -16,13 +16,13 @@ namespace MonolithEngine
 
     ICollisionComponent GetCollisionComponent();
 
-    internal void CollisionStarted(IGameObject otherCollider, bool allowOverlap);
+    void CollisionStarted(IGameObject otherCollider, bool allowOverlap);
 
-    internal void CollisionEnded(IGameObject otherCollider);
+    void CollisionEnded(IGameObject otherCollider);
 
-    internal Dictionary<Type, bool> GetCollidesAgainst();
+    Dictionary<Type, bool> GetCollidesAgainst();
 
-    internal HashSet<Type> GetTriggeredAgainst();
+    HashSet<Type> GetTriggeredAgainst();
 
     bool CheckGridCollisions { get; set; }
   }

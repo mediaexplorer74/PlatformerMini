@@ -7,7 +7,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class LayerDefinition

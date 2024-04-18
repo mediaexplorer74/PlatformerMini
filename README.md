@@ -9,17 +9,20 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 - Game tweaked a little too (it incapsulated into Game folder because of monolith structure)))
 
 ## Screenshot(s)
-![UWP](Images/screenshot01.png)
+![UWP, W11 Tiny](Images/screenshot01.png)
 
-![UWP](Images/screenshot02.png)
+![UWP, W11 Tiny](Images/screenshot02.png)
+
+![UWP, W10M Lumia 950](Images/screenshot02.png)
 
 
-## Features
-Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
-
+## Features / My experimentation(s)
+- Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
+- Not tweaked Monogame 3.8 library (resuces project suze, but so many UI stranges)
+- On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start).
 
 ## Requirements
-This app requires Visual Studio 2022 Community to run. [Click here to learn how to get set up with Visual Studio](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
+This app requires Visual Studio 2017/2019/2022 Community to run. [Click here to learn how to get set up with Visual Studio](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
 
 ## Install and run the app
 1. Install **MonoGame 3.8** for Visual Studio from [monogame.net](http://www.monogame.net/)

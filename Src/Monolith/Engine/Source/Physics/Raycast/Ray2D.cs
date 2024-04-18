@@ -7,7 +7,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-#nullable disable
+
 namespace MonolithEngine.Experimental
 {
   public class Ray2D

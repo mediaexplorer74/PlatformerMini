@@ -6,7 +6,7 @@
 
 using System;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public interface IComponent

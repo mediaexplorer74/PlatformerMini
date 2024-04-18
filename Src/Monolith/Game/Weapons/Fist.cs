@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using MonolithEngine;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   internal class Fist : PhysicalEntity

@@ -1,8 +1,5 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: MonolithEngine.SelectableImage
+﻿// Type: MonolithEngine.SelectableImage
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,12 +7,12 @@ using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Diagnostics;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class SelectableImage : Image, SelectableUIElement
   {
-    public bool IsHoveredOver;
+    public bool IsHoveredOver;// = false;
     public bool IsSelected;
     private Texture2D selectedImageTexture;
     private Rectangle unscaledSelectionBox;
@@ -43,31 +40,53 @@ namespace MonolithEngine
       : base(texture, position, sourceRectangle, scale, rotation, depth, color)
     {
       this.selectedImageTexture = selectedImage;
-      this.unscaledSelectionBox = !(sourceRectangle == new Rectangle()) ? new Rectangle((int) position.X + sourceRectangle.X, (int) position.Y + sourceRectangle.Y, (int) ((double) sourceRectangle.Width * (double) scale), (int) ((double) sourceRectangle.Height * (double) scale)) : new Rectangle((int) position.X + sourceRectangle.X, (int) position.Y + sourceRectangle.Y, (int) ((double) this.ImageTexture.Width * (double) scale), (int) ((double) this.ImageTexture.Height * (double) scale));
+      this.unscaledSelectionBox = !(sourceRectangle == new Rectangle()) 
+                ? new Rectangle((int) position.X + sourceRectangle.X, 
+                (int) position.Y + sourceRectangle.Y, 
+                (int) ((double) sourceRectangle.Width * (double) scale),
+                (int) ((double) sourceRectangle.Height * (double) scale)) 
+                : new Rectangle((int) position.X + sourceRectangle.X, 
+                (int) position.Y + sourceRectangle.Y, 
+                (int) ((double) this.ImageTexture.Width * (double) scale),
+                (int) ((double) this.ImageTexture.Height * (double) scale));
       this.fireOnHold = fireOnHold;
       this.OnResolutionChanged();
     }
 
     public void OnResolutionChanged()
     {
-      this.selectionBox = new Rectangle((int) ((double) this.unscaledSelectionBox.X * (double) Config.SCALE), (int) ((double) this.unscaledSelectionBox.Y * (double) Config.SCALE), (int) ((double) this.unscaledSelectionBox.Width * (double) Config.SCALE), (int) ((double) this.unscaledSelectionBox.Height * (double) Config.SCALE));
+      this.selectionBox = new Rectangle((int) (
+          (double) this.unscaledSelectionBox.X * (double) Config.SCALE_X), 
+          (int) ((double) this.unscaledSelectionBox.Y * (double) Config.SCALE_Y), 
+          (int) ((double) this.unscaledSelectionBox.Width * (double) Config.SCALE_X), 
+          (int) ((double) this.unscaledSelectionBox.Height * (double) Config.SCALE_Y));
     }
 
-    private bool IsMouseOver(Point mousePosition) => this.selectionBox.Contains(mousePosition);
+        private bool IsMouseOver(Point mousePosition)
+        {
+            return this.selectionBox.Contains(mousePosition);
+        }
 
-    private bool IsMouseOver(Vector2 mousePosition) => this.selectionBox.Contains(mousePosition);
+        private bool IsMouseOver(Vector2 mousePosition)
+        {
+            return this.selectionBox.Contains(mousePosition);
+        }
 
-    public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
     {
             if (this.IsHoveredOver || this.IsSelected)
             {
                 try
                 {
                     if (this.selectedImageTexture != null)
-                      spriteBatch.Draw(this.selectedImageTexture, 
-                          this.GetPosition(), new Rectangle?(this.SourceRectangle), Color.White, this.Rotation, Vector2.Zero, this.Scale, this.SpriteEffect, (float)this.Depth);
+                        spriteBatch.Draw(this.selectedImageTexture,
+                            this.GetPosition(), new Rectangle?(this.SourceRectangle),
+                            Color.White, this.Rotation, Vector2.Zero, this.Scale,
+                            this.SpriteEffect, (float)this.Depth);
                     else
-                        base.Draw(spriteBatch);
+                    {
+                       base.Draw(spriteBatch);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -88,7 +107,9 @@ namespace MonolithEngine
         {
           if (this.HoverSoundEffectName != null)
             AudioEngine.Play(this.HoverSoundEffectName);
+
           Action hoverStartedAction = this.HoverStartedAction;
+
           if (hoverStartedAction != null)
             hoverStartedAction();
         }
@@ -124,8 +145,10 @@ namespace MonolithEngine
           break;
         }
       }
+
       if (flag || !this.isBeingFired)
         return;
+
       Action onRelease = this.OnRelease;
       if (onRelease != null)
         onRelease();
@@ -139,6 +162,9 @@ namespace MonolithEngine
       this.OnClick();
     }
 
-    public void SetUserInterface(UserInterface userInterface) => this.userInterface = userInterface;
-  }
+        public void SetUserInterface(UserInterface userInterface)
+        {
+            this.userInterface = userInterface;
+        }
+    }
 }

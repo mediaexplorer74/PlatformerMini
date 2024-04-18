@@ -7,7 +7,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public interface IRayBlocker

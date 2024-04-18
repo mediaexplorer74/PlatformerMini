@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class AIStateMachine<T> : IComponent, IUpdatableComponent where T : IGameObject

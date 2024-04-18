@@ -6,7 +6,7 @@
 
 using System.IO;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public interface MapSerializer

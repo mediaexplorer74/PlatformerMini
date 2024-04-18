@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class UserInterface
@@ -18,6 +18,10 @@ namespace MonolithEngine
     private List<IUIElement> newElements = new List<IUIElement>();
     private List<IUIElement> removedElements = new List<IUIElement>();
     private IUIElement selectedElement;
+
+    private TouchCollection currentTouchState;
+    private TouchCollection prevTouchState;
+
     private MouseState currentMouseState;
     private MouseState prevMouseState;
 
@@ -58,27 +62,62 @@ namespace MonolithEngine
 
     public void Update()
     {
-            //TEMP
-      if (1 == 0)//(MonolithGame.Platform.IsMobile())
+      //RnD : TouchPanel handling
+      if (1==1)//(MonolithGame.Platform.IsMobile())
       {
-        foreach (IUIElement element in this.elements)
-          element.Update(TouchPanel.GetState());
-        this.HandleNewElements();
-      }
-      else
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        this.currentTouchState = TouchPanel.GetState();            
+
+        if (/*this.selectedElement != null &&*/ this.currentTouchState.Count >= 1)
+        {
+            TouchCollection prevTouchState = this.prevTouchState;
+
+            //if( this.prevTouchState.Count == 0
+            //    && this.selectedElement is SelectableUIElement  )
+            //    (this.selectedElement as SelectableUIElement).OnClick();
+
+            foreach (IUIElement element in this.elements)
+                element.Update(this.currentTouchState
+                        /*new Microsoft.Xna.Framework.Point(
+                            (int)this.currentTouchState[0].Position.X,
+                            (int)this.currentTouchState[0].Position.Y)*/);
+
+                    
+         }
+         //this.HandleNewElements();
+         //this.prevTouchState = this.currentTouchState;
+      }        
+                 
+            
+      // Mouse handling
+      if (1==1)//else
       {
         this.currentMouseState = Mouse.GetState();
         if (this.selectedElement != null && this.currentMouseState.LeftButton == ButtonState.Pressed)
         {
           MouseState prevMouseState = this.prevMouseState;
-          if (this.prevMouseState.LeftButton != ButtonState.Pressed && this.selectedElement is SelectableUIElement)
+
+          if 
+          (
+            this.prevMouseState.LeftButton != ButtonState.Pressed 
+            && this.selectedElement is SelectableUIElement
+          )
             (this.selectedElement as SelectableUIElement).OnClick();
         }
+
         foreach (IUIElement element in this.elements)
           element.Update(this.currentMouseState.Position);
-        this.HandleNewElements();
-        this.prevMouseState = this.currentMouseState;
+
+        //this.HandleNewElements();
+        //this.prevMouseState = this.currentMouseState;
       }
+        //TEST IT
+      //  foreach (IUIElement element in this.elements)
+      //      element.Update(this.currentMouseState.Position);
+
+       this.HandleNewElements();
+       this.prevMouseState = this.currentMouseState;
+       this.prevTouchState = this.currentTouchState;
     }
 
     internal void HandleNewElements()
@@ -91,6 +130,7 @@ namespace MonolithEngine
       }
       if (this.removedElements.Count <= 0)
         return;
+
       foreach (IUIElement removedElement in this.removedElements)
         this.elements.Remove(removedElement);
       this.removedElements.Clear();

@@ -7,7 +7,7 @@
 using ForestPlatformerExample;
 using MonolithEngine;
 
-#nullable disable
+
 namespace ForestPlatformerExampl
 {
   internal class CarrotAIStateMachine : AIStateMachine<Carrot>

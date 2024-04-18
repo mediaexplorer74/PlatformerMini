@@ -3,7 +3,7 @@
 
 using Newtonsoft.Json;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class FieldInstance

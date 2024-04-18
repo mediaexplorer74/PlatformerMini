@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class Camera
@@ -45,8 +45,8 @@ namespace MonolithEngine
       this.graphicsDeviceManager = graphicsDeviceManager;
       this.Position = Vector2.Zero;
       this.direction = Vector2.Zero;
-      this.Zoom = Config.SCALE;
-      this.CameraMode = cameraMode;
+      this.Zoom = Math.Abs((Config.SCALE_X + Config.SCALE_Y) / 2);
+            this.CameraMode = cameraMode;
       this.cameraNumber = cameraNumber;
       this.Initialize();
     }
@@ -71,10 +71,11 @@ namespace MonolithEngine
       }
       Logger.Info("Configuring camera, viewport: [" + this.Viewport.ToString() + "], mode [" + this.CameraMode.ToString() + "], camera number: " + this.cameraNumber.ToString());
       this.origin = new Vector2((float) this.Viewport.Width / 2f, (float) this.Viewport.Height / 2f);
-      this.Zoom = Config.SCALE;
+      this.Zoom = Math.Abs((Config.SCALE_X + Config.SCALE_Y) / 2);
+
       if (this.target != null)
         this.TrackTarget(this.target, true, this.targetTracingOffset);
-      this.uiTransofrmMatrix = Matrix.Identity * Matrix.CreateScale(Config.SCALE, Config.SCALE, 1f);
+      this.uiTransofrmMatrix = Matrix.Identity * Matrix.CreateScale(Config.SCALE_X, Config.SCALE_Y, 1f);
     }
 
     public void Shake(float power = 5f, float duration = 300f, bool easeOut = true)
@@ -136,7 +137,7 @@ namespace MonolithEngine
 
     public Vector2 WorldToScreenSpace(Vector2 position)
     {
-      return Vector2.Transform(position, this.WorldTranformMatrix) / Config.SCALE;
+      return Vector2.Transform(position, this.WorldTranformMatrix) / Math.Abs((Config.SCALE_X + Config.SCALE_Y) / 2); 
     }
 
     public void TrackTarget(Entity entity, bool immediate = false, Vector2 tracingOffset = default (Vector2))

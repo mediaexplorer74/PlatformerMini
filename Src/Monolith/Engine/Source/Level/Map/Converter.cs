@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   internal static class Converter

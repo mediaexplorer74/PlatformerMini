@@ -6,7 +6,7 @@
 
 using Microsoft.Xna.Framework;
 
-#nullable disable
+
 namespace MonolithEngine
 {
   public class BoxTrigger : AbstractTrigger

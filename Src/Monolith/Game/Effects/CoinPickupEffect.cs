@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonolithEngine;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace ForestPlatformerExample
 {
   public class CoinPickupEffect : Image
