@@ -18,7 +18,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 
 ## Features / My experimentation(s)
 - Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
-- Not tweaked Monogame 3.8 library (resuces project suze, but so many UI stranges)
+- Not tweaked Monogame 3.8 library used (it reduces project suze, but so many UI stranges)
 - On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start).
 
 ## Requirements
