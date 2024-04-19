@@ -1,13 +1,12 @@
 ﻿
 // Type: MonolithEngine.AnimationStateMachine
-// Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
+
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
 namespace MonolithEngine
@@ -56,16 +55,24 @@ namespace MonolithEngine
 
     public void PlayAnimation(string stateName)
     {
-      foreach (AnimationStateMachine.StateAnimation animation in this.animations)
-      {
-        if (animation.state.Equals(stateName))
-        {
-          this.animationOverride = animation;
-          this.animationOverride.animation.Init();
-          return;
-        }
-      }
-      throw new Exception("Requested animation not found");
+            try
+            {
+                foreach (AnimationStateMachine.StateAnimation animation in this.animations)
+                {
+                    if (animation.state.Equals(stateName))
+                    {
+                        this.animationOverride = animation;
+                        this.animationOverride.animation.Init();
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine("[ex] AnimationStateMachine - Requested animation not found: " + ex.Message);
+            }
+      //throw new Exception("Requested animation not found");
     }
 
     public bool HasAnimation(string state)

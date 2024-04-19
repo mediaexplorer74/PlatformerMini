@@ -104,14 +104,15 @@ namespace ForestPlatformerExample
                 }
                 else if (entity.Identifier.Equals("Spikes"))
                 {
-                    Direction dir = default;
+                    Direction dir = Direction.EAST;//default;
                     foreach (FieldInstance field in entity.FieldInstances)
                     {
                         if (field.Identifier == "Direction")
                         {
                             try
                             {
-                                dir = (Direction)Enum.Parse(typeof(Direction), field.Value.ToString());
+                                if (field.Value != null)
+                                  dir = (Direction)Enum.Parse(typeof(Direction), field.Value.ToString());
                             }
                             catch
                             {
@@ -209,7 +210,7 @@ namespace ForestPlatformerExample
                 }
                 else if (entity.Identifier.Equals("EnemyRock"))
                 {
-                    RockSize size = default;
+                    RockSize size = (RockSize)RockSize.SMALL;//default;
                     foreach (FieldInstance field in entity.FieldInstances)
                     {
 
@@ -217,7 +218,8 @@ namespace ForestPlatformerExample
                         {
                             try
                             {
-                                size = (RockSize)Enum.Parse(typeof(RockSize), field.Value.ToString());
+                                if (field.Value != null)
+                                  size = (RockSize)Enum.Parse(typeof(RockSize), field.Value.ToString());
                             }
                             catch (Exception ex)
                             {

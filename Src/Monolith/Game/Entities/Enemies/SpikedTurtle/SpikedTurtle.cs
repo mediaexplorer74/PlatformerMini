@@ -1,8 +1,7 @@
 ﻿
 // Type: ForestPlatformerExample.SpikedTurtle
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
+
 
 using Microsoft.Xna.Framework;
 using MonolithEngine;
@@ -21,42 +20,59 @@ namespace ForestPlatformerExample
       : base(scene, position)
     {
       this.CurrentFaceDirection = currentFaceDirection;
-      this.AddComponent<CircleCollisionComponent>(new CircleCollisionComponent((IColliderEntity) this, 17f, new Vector2(8f, -5f)));
+      this.AddComponent<CircleCollisionComponent>(new CircleCollisionComponent((IColliderEntity) this, 
+          17f, new Vector2(8f, -5f)));
       AnimationStateMachine newComponent = new AnimationStateMachine();
       this.AddComponent<AnimationStateMachine>(newComponent);
       newComponent.Offset = new Vector2(8f, -13f);
       this.CollisionOffsetBottom = 1f;
-      SpriteSheetAnimation animation1 = new SpriteSheetAnimation((Entity) this, Assets.GetAnimationTexture("TurtleIdleNormal"), 24);
+      SpriteSheetAnimation animation1 = new SpriteSheetAnimation((Entity) this, 
+          Assets.GetAnimationTexture("TurtleIdleNormal"), 24);
       animation1.Looping = true;
-      animation1.StartedCallback = (Action) (() => Timer.TriggerAfter(3000f, (Action) (() => this.SpikesOutState())));
-      newComponent.RegisterAnimation("IdleNormalLeft", (AbstractAnimation) animation1, (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
+      animation1.StartedCallback = (Action) (() => Timer.TriggerAfter(
+          3000f, (Action) (() => this.SpikesOutState())));
+      newComponent.RegisterAnimation("IdleNormalLeft", (AbstractAnimation) animation1,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
       SpriteSheetAnimation animation2 = animation1.CopyFlipped();
-      newComponent.RegisterAnimation("IdleNormalRight", (AbstractAnimation) animation2, (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
-      SpriteSheetAnimation animation3 = new SpriteSheetAnimation((Entity) this, Assets.GetAnimationTexture("TurtleIdleSpiked"), 24);
+      newComponent.RegisterAnimation("IdleNormalRight", (AbstractAnimation) animation2,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
+      SpriteSheetAnimation animation3 = new SpriteSheetAnimation((Entity) this,
+          Assets.GetAnimationTexture("TurtleIdleSpiked"), 24);
       animation3.Looping = true;
-      newComponent.RegisterAnimation("IdleSpikedLeft", (AbstractAnimation) animation3, (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
+      newComponent.RegisterAnimation("IdleSpikedLeft", (AbstractAnimation) animation3,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
       SpriteSheetAnimation animation4 = animation3.CopyFlipped();
-      newComponent.RegisterAnimation("IdleSpikedRight", (AbstractAnimation) animation4, (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
-      SpriteSheetAnimation animation5 = new SpriteSheetAnimation((Entity) this, Assets.GetAnimationTexture("TurtleHit"), 24);
+      newComponent.RegisterAnimation("IdleSpikedRight", (AbstractAnimation) animation4,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
+      SpriteSheetAnimation animation5 = new SpriteSheetAnimation((Entity) this,
+          Assets.GetAnimationTexture("TurtleHit"), 24);
       animation5.Looping = false;
       animation5.StartedCallback = (Action) (() => this.beingHit = true);
       animation5.StoppedCallback = (Action) (() => this.beingHit = false);
-      newComponent.RegisterAnimation("HitLeft", (AbstractAnimation) animation5, (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
+      newComponent.RegisterAnimation("HitLeft", (AbstractAnimation) animation5,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
       SpriteSheetAnimation animation6 = animation5.CopyFlipped();
-      newComponent.RegisterAnimation("HitRight", (AbstractAnimation) animation6, (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
-      SpriteSheetAnimation animation7 = new SpriteSheetAnimation((Entity) this, Assets.GetAnimationTexture("TurtleSpikesOut"), 240);
+      newComponent.RegisterAnimation("HitRight", (AbstractAnimation) animation6,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
+      SpriteSheetAnimation animation7 = new SpriteSheetAnimation((Entity) this, 
+          Assets.GetAnimationTexture("TurtleSpikesOut"), 240);
       animation7.Looping = false;
       animation7.AddFrameAction(5, (Action<int>) (frame => this.SpikesOut = true));
       animation7.StoppedCallback = (Action) (() => this.SpikesOutWait());
-      newComponent.RegisterAnimation("SpikesOutLeft", (AbstractAnimation) animation7, (Func<bool>) (() => false));
+      newComponent.RegisterAnimation("SpikesOutLeft", (AbstractAnimation) animation7, 
+          (Func<bool>) (() => false));
       SpriteSheetAnimation animation8 = animation7.CopyFlipped();
-      newComponent.RegisterAnimation("SpikesOutRight", (AbstractAnimation) animation8, (Func<bool>) (() => false));
-      SpriteSheetAnimation animation9 = new SpriteSheetAnimation((Entity) this, Assets.GetAnimationTexture("TurtleSpikesIn"), 240);
+      newComponent.RegisterAnimation("SpikesOutRight", (AbstractAnimation) animation8,
+          (Func<bool>) (() => false));
+      SpriteSheetAnimation animation9 = new SpriteSheetAnimation((Entity) this, 
+          Assets.GetAnimationTexture("TurtleSpikesIn"), 240);
       animation9.Looping = false;
       animation9.AddFrameAction(6, (Action<int>) (frame => this.SpikesOut = false));
-      newComponent.RegisterAnimation("SpikesInLeft", (AbstractAnimation) animation9, (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
+      newComponent.RegisterAnimation("SpikesInLeft", (AbstractAnimation) animation9, 
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.WEST));
       SpriteSheetAnimation animation10 = animation9.CopyFlipped();
-      newComponent.RegisterAnimation("SpikesInRight", (AbstractAnimation) animation10, (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
+      newComponent.RegisterAnimation("SpikesInRight", (AbstractAnimation) animation10,
+          (Func<bool>) (() => this.CurrentFaceDirection == Direction.EAST));
     }
 
     private void SpikesOutState()
@@ -93,7 +109,8 @@ namespace ForestPlatformerExample
     {
             try
             {
-                this.GetComponent<AnimationStateMachine>().PlayAnimation(nextAnim);
+                if (this.GetComponent<AnimationStateMachine>() != null)
+                  this.GetComponent<AnimationStateMachine>().PlayAnimation(nextAnim);
             }
             catch (Exception ex)
             {

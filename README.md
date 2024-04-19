@@ -9,11 +9,19 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 - Game tweaked a little too (it incapsulated into Game folder because of monolith structure)))
 
 ## Screenshot(s)
-![UWP, W11 Tiny](Images/screenshot01.png)
+![Sony Vaio](Images/shot01.png)
 
-![UWP, W11 Tiny](Images/screenshot02.png)
+![Sony Vaio](Images/shot02.png)
 
-![UWP, W10M Lumia 950](Images/screenshot03.png)
+![Sony Vaio](Images/shot03.png)
+
+![Sony Vaio](Images/shot04.png)
+
+![Sony Vaio](Images/shot05.png)
+
+![Sony Vaio](Images/shot06.png)
+
+![Lumia 950](Images/shot07.png)
 
 
 ## Features / My experimentation(s)
@@ -21,7 +29,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 - Not tweaked Monogame 3.8 library used (it reduces project size, but so many UI stranges)
 - On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start)
 - Design folder added (use it via LDtk level editor)
-- Level 3 (Draft) added for my better game mechanics expoling ;)
+- Level 3 (Draft) added for my better game mechanics exploring ;)
 
 ## Requirements
 This app requires Visual Studio 2017/2019/2022 Community to run. [Click here to learn how to get set up with Visual Studio](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).

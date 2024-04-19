@@ -65,13 +65,16 @@ namespace ForestPlatformerExample
       entityParser.LoadIntGrid((AbstractScene) this);
       this.hero = entityParser.GetHero();
 
-      if (!MonolithGame.Platform.IsMobile())
-        return;
-      
-      // Mobile
-      foreach (IUIElement button in new MobileButtonPanel(this.hero).GetButtons())
-        this.UI.AddUIElement(button);
-    }
+      //  Mobile
+      if (1==0)//(MonolithGame.Platform.IsMobile())
+      {
+            foreach (IUIElement button in new MobileButtonPanel(this.hero).GetButtons())
+            this.UI.AddUIElement(button);
+      }
+      // add it ? 
+      //this.world = (LDTKMap) null;
+
+     }
 
     public override void OnEnd()
     {
