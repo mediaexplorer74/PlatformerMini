@@ -109,7 +109,14 @@ namespace ForestPlatformerExample
                     {
                         if (field.Identifier == "Direction")
                         {
-                            dir = (Direction)Enum.Parse(typeof(Direction), field.Value.ToString());
+                            try
+                            {
+                                dir = (Direction)Enum.Parse(typeof(Direction), field.Value.ToString());
+                            }
+                            catch
+                            {
+                                dir = Direction.EAST;
+                            }
                         }
                     }
                     float size = entity.Width > entity.Height ? entity.Width : entity.Height;
@@ -208,7 +215,15 @@ namespace ForestPlatformerExample
 
                         if (field.Identifier == "RockSize")
                         {
-                            size = (RockSize)Enum.Parse(typeof(RockSize), field.Value.ToString());
+                            try
+                            {
+                                size = (RockSize)Enum.Parse(typeof(RockSize), field.Value.ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("RockSize parsing error: " + ex.Message);
+                                size = (RockSize)RockSize.SMALL;
+                            }
                         }
                     }
                     new Rock(scene, position, size);

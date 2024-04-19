@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.Level2Scene
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
@@ -73,7 +73,10 @@ namespace ForestPlatformerExample
         this.UI.AddUIElement(button);
     }
 
-    public override void OnEnd() => AudioEngine.Pause("Level2Music");
+    public override void OnEnd()
+    {
+        AudioEngine.Pause("Level2Music");
+    }
 
     public override void OnStart()
     {
@@ -85,6 +88,10 @@ namespace ForestPlatformerExample
       PlatformerGame.CurrentScene = this.SceneName;
     }
 
-    public override void OnFinished() => this.SceneManager.LoadScene("EndScene");
-  }
+        public override void OnFinished()
+        {
+            //this.SceneManager.LoadScene("EndScene");
+            this.SceneManager.LoadScene("Level_3");
+        }
+    }
 }

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.NextLevelTrigger
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
@@ -25,7 +25,9 @@ namespace ForestPlatformerExample
     public override void OnEnterTrigger(string triggerTag, IGameObject otherEntity)
     {
       if (otherEntity is Hero)
-        (otherEntity as Hero).LevelEndReached = true;
+      {
+            (otherEntity as Hero).LevelEndReached = true;
+      }
       base.OnEnterTrigger(triggerTag, otherEntity);
     }
 

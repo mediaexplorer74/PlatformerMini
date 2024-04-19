@@ -82,7 +82,10 @@ namespace ForestPlatformerExample
             }
         }
 
-        public bool ReadyForNextLevel { get => Ladder != null; }
+        public bool ReadyForNextLevel
+        {
+            get => true;//Ladder != null;
+        }
 
         public bool OnIce
         {
@@ -826,7 +829,7 @@ namespace ForestPlatformerExample
 
         public override void FixedUpdate()
         {
-            if (LevelEndReached && Ladder != null)
+            if (LevelEndReached/* && Ladder != null*/)
             {
                 Transform.Velocity += autoMovementSpeed;
             }
@@ -1135,6 +1138,10 @@ namespace ForestPlatformerExample
                 Hit(otherCollider, true);
             }
             else if (otherCollider is GameFinishTrophy)
+            {
+                Scene.Finish();
+            }
+            else if (otherCollider is NextLevelTrigger)
             {
                 Scene.Finish();
             }

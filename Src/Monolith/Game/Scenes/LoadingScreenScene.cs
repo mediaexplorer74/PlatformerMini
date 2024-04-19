@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.LoadingScreenScene
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
@@ -28,7 +28,8 @@ namespace ForestPlatformerExample
 
     public override void Load()
     {
-      this.UI.AddUIElement((IUIElement) new Image(Assets.GetTexture2D("HUDLoading"), new Vector2(200f, 200f)));
+      this.UI.AddUIElement((IUIElement) new Image(Assets.GetTexture2D("HUDLoading"), 
+          new Vector2(200f, /*200f*/100f)));
     }
 
     public override void OnEnd()

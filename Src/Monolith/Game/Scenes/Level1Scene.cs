@@ -1,8 +1,5 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForestPlatformerExample.Level1Scene
-// Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
+﻿// Type: ForestPlatformerExample.Level1Scene
+
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -56,10 +53,15 @@ namespace ForestPlatformerExample
     private void LoadData()
     {
       Logger.Debug("Loading LEVEL 1: UI");
-      this.UI.AddUIElement((IUIElement) new Image(Assets.GetTexture2D("HUDCointCount"), new Vector2(5f, 5f), scale: 2f));
-      this.UI.AddUIElement((IUIElement) new TextField(this.font, (Func<string>) (() => PlatformerGame.CoinCount.ToString()), new Vector2(50f, 5f), scale: 2.5f));
+      this.UI.AddUIElement((IUIElement) new Image(Assets.GetTexture2D("HUDCointCount"), 
+          new Vector2(5f, 5f), scale: 2f));
+      this.UI.AddUIElement((IUIElement) new TextField(this.font,
+          (Func<string>) (() => PlatformerGame.CoinCount.ToString()), 
+          new Vector2(50f, 5f), scale: 2.5f));
+
       Logger.Debug("Loading LEVEL 1: creating entity parser...");
       EntityParser entityParser = new EntityParser(this.world);
+
       Logger.Debug("Loading LEVEL 1: loading entities...");
       entityParser.LoadEntities((AbstractScene) this, this.SceneName);
       entityParser.LoadIntGrid((AbstractScene) this);

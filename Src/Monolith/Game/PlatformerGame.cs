@@ -1,8 +1,8 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.PlatformerGame
-// Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
+
+// PlatformerGame is simple Platformer Example (it demonstares MonolithEngine using)
+
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,8 +23,7 @@ namespace ForestPlatformerExample
     private LDTKMap world;
     public static string CurrentScene;
 
-    public PlatformerGame()//(MonolithEngine.Platform platform)
-      : base()//(platform)
+    public PlatformerGame() : base()
     {
     }
 
@@ -85,24 +84,34 @@ namespace ForestPlatformerExample
     {
       foreach (Camera camera in this.Cameras)
         camera.Limits = new Rectangle?(new Rectangle(0, 50, 5470, 700));
+
       Logger.Debug("Loading map from json...");
-      using (Stream stream = TitleContainer.OpenStream(Path.Combine(this.Content.RootDirectory, "Map/level.json")))
+      using (Stream stream = TitleContainer.OpenStream(Path.Combine(this.Content.RootDirectory,
+          "Map/level.json")))
         this.world = ((MapSerializer) new LDTKJsonMapParser()).Load(stream);
+
       Logger.Debug("Loading assets: HUD texts...");
       Assets.LoadTexture("HUDNewGameBase", "ForestAssets/UI/new_game_base");
       Assets.LoadTexture("HUDNewGameSelected", "ForestAssets/UI/new_game_selected");
+
       Assets.LoadTexture("HUDSettingsBase", "ForestAssets/UI/settings_base");
       Assets.LoadTexture("HUDSettingsSelected", "ForestAssets/UI/settings_selected");
+
       Assets.LoadTexture("HUDQuitBase", "ForestAssets/UI/quit_base");
       Assets.LoadTexture("HUDQuitSelected", "ForestAssets/UI/quit_selected");
+
       Assets.LoadTexture("HUDContinueBase", "ForestAssets/UI/continue_base");
       Assets.LoadTexture("HUDContinueSelected", "ForestAssets/UI/continue_selected");
+
       Assets.LoadTexture("HUDVideoSettingsBase", "ForestAssets/UI/video_base");
       Assets.LoadTexture("HUDVideoSettingsSelected", "ForestAssets/UI/video_selected");
+
       Assets.LoadTexture("HUDAudioSettingsBase", "ForestAssets/UI/audio_base");
       Assets.LoadTexture("HUDAudioSettingsSelected", "ForestAssets/UI/audio_selected");
+
       Assets.LoadTexture("HUDBackBase", "ForestAssets/UI/back_base");
       Assets.LoadTexture("HUDBackSelected", "ForestAssets/UI/back_selected");
+
       Assets.LoadTexture("HUDResolutionLabel", "ForestAssets/UI/resolution");
       Assets.LoadTexture("HUDFPSLimitLabel", "ForestAssets/UI/fps_limit");
       Assets.LoadTexture("HUDVsyncLabel", "ForestAssets/UI/vsync");
@@ -128,10 +137,16 @@ namespace ForestPlatformerExample
       Assets.LoadTexture("HUDArrowLeftBase", "ForestAssets/UI/arrow_right_base", flipHorizontal: true);
       Assets.LoadTexture("HUDArrowLeftSelected", "ForestAssets/UI/arrow_right_selected", flipHorizontal: true);
       Assets.LoadTexture("HUDLoading", "ForestAssets/UI/loading");
+
       Assets.LoadTexture("Level1Base", "ForestAssets/UI/level_1_base");
       Assets.LoadTexture("Level1Selected", "ForestAssets/UI/level_1_selected");
+
       Assets.LoadTexture("Level2Base", "ForestAssets/UI/level_2_base");
       Assets.LoadTexture("Level2Selected", "ForestAssets/UI/level_2_selected");
+
+      Assets.LoadTexture("Level3Base", "ForestAssets/UI/level_3_base");
+      Assets.LoadTexture("Level3Selected", "ForestAssets/UI/level_3_selected");
+
       Assets.LoadTexture("RestartBase", "ForestAssets/UI/restart_base");
       Assets.LoadTexture("RestartSelected", "ForestAssets/UI/restart_selected");
       Assets.LoadTexture("FinishedText", "ForestAssets/UI/finish");
@@ -199,9 +214,12 @@ namespace ForestPlatformerExample
       Assets.LoadTexture("FinishedTrophy", "IcySkies/Items/POI/End (Idle)", autoBoundingBox: true);
       Logger.Debug("Loading assets: fonts...");
       Assets.AddFont("InGameText", this.Content.Load<SpriteFont>("Text/InGameText"));
+
       Logger.Debug("Loading assets: sounds...");
       AudioEngine.AddSound("Level1Music", "ForestAssets/Audio/POL-chubby-cat-long", true, AudioTag.MUSIC);
       AudioEngine.AddSound("Level2Music", "IcySkies/Audio/level_2_bg_2", true, AudioTag.MUSIC);
+      AudioEngine.AddSound("Level3Music", "ForestAssets/Audio/POL-chubby-cat-long", true, AudioTag.MUSIC); //RnD
+
       AudioEngine.AddSound("HeroPunch", "ForestAssets/Audio/hero_punch");
       AudioEngine.AddSound("SpringBounceSound", "ForestAssets/Audio/spring");
       AudioEngine.AddSound("JumpSound", "ForestAssets/Audio/jump2", maxVolume: 0.5f);
@@ -239,31 +257,48 @@ namespace ForestPlatformerExample
       }
 
       Logger.Debug("Loading scenes...");
-      MainMenuScene scene1 = new MainMenuScene();
-      PauseMenuScene scene2 = new PauseMenuScene();
-      Level1Scene scene3 = new Level1Scene(this.world, this.font);
-      VideoSettingsScene scene4 = new VideoSettingsScene();
+      MainMenuScene mainMenuScene = new MainMenuScene();
+      PauseMenuScene pauseMenuScene = new PauseMenuScene();
+
+      
+      VideoSettingsScene videoSettingsScene = new VideoSettingsScene();
+      AudioSettingsScene audioSettingsScene = new AudioSettingsScene();
+
       LoadingScreenScene loadingScreenScene = new LoadingScreenScene();
-      Level2Scene scene5 = new Level2Scene(this.world, this.font);
-      LevelSelectScreen scene6 = new LevelSelectScreen();
-      GameEndScene scene7 = new GameEndScene();
+
+      LevelSelectScreenScene levelSelectScreenScene = new LevelSelectScreenScene();
+      Level1Scene level1Scene = new Level1Scene(this.world, this.font);
+      Level2Scene level2Scene = new Level2Scene(this.world, this.font);
+      Level3Scene level3Scene = new Level3Scene(this.world, this.font);
+     
+
+      GameEndScene gameEndScene = new GameEndScene();
 
       // RnD
       if (1==1)//(!MonolithGame.Platform.IsMobile())
         this.SceneManager.AddScene((AbstractScene) new SettingsScene());
       
       this.world = (LDTKMap) null;
-      this.SceneManager.AddScene((AbstractScene) scene1);
-      this.SceneManager.AddScene((AbstractScene) scene2);
-      this.SceneManager.AddScene((AbstractScene) scene3);
-      this.SceneManager.AddScene((AbstractScene) scene4);
+      this.SceneManager.AddScene((AbstractScene) mainMenuScene);
+      this.SceneManager.AddScene((AbstractScene) pauseMenuScene);
+      
+      this.SceneManager.AddScene((AbstractScene)levelSelectScreenScene);
+
+      this.SceneManager.AddScene((AbstractScene) videoSettingsScene);
+      this.SceneManager.AddScene((AbstractScene)audioSettingsScene);
+
       this.SceneManager.AddScene((AbstractScene) loadingScreenScene);
-      this.SceneManager.AddScene((AbstractScene) scene5);
-      this.SceneManager.AddScene((AbstractScene) scene6);
-      this.SceneManager.AddScene((AbstractScene) scene7);
+
+      this.SceneManager.AddScene((AbstractScene) level1Scene);
+      this.SceneManager.AddScene((AbstractScene) level2Scene);
+      this.SceneManager.AddScene((AbstractScene) level3Scene);
+
+
+      this.SceneManager.AddScene((AbstractScene) gameEndScene);
+
       Logger.Debug("Starting main menu...");
       this.SceneManager.SetLoadingScene((AbstractScene) loadingScreenScene);
-      this.SceneManager.LoadScene((AbstractScene) scene1);
+      this.SceneManager.LoadScene((AbstractScene) mainMenuScene);
     }
 
     protected override void Update(GameTime gameTime)
@@ -272,11 +307,14 @@ namespace ForestPlatformerExample
       KeyboardState state = Keyboard.GetState();
       if (this.prevKeyboardState != state && state.IsKeyDown(Keys.R))
         this.SceneManager.LoadScene(PlatformerGame.CurrentScene);
-      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape) && PlatformerGame.WasGameStarted && !PlatformerGame.Paused)
+      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape) 
+                && PlatformerGame.WasGameStarted && !PlatformerGame.Paused)
         this.SceneManager.StartScene("PauseMenu");
-      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape) && PlatformerGame.WasGameStarted && PlatformerGame.Paused)
+      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape) 
+                && PlatformerGame.WasGameStarted && PlatformerGame.Paused)
         this.SceneManager.StartScene(PlatformerGame.CurrentScene);
-      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape) && !PlatformerGame.WasGameStarted)
+      else if (this.prevKeyboardState != state && state.IsKeyDown(Keys.Escape)
+                && !PlatformerGame.WasGameStarted)
         this.SceneManager.StartScene("MainMenu");
       this.prevKeyboardState = state;
     }

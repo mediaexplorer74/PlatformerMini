@@ -1,8 +1,6 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.VideoSettingsScene
-// Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
-// Assembly location: C:\Users\Admin\Desktop\RE\PlatformerDemo\PlatformerNetStandard.dll
+
 
 using Microsoft.Xna.Framework;
 using MonolithEngine;
@@ -14,10 +12,14 @@ namespace ForestPlatformerExample
 {
   internal class VideoSettingsScene : AbstractScene
   {
-    private MultiSelectionImage resolutionSelect = new MultiSelectionImage(new Vector2(300f, 100f), scale: 0.25f);
-    private MultiSelectionImage frameLimitSelect = new MultiSelectionImage(new Vector2(300f, 200f), scale: 0.25f);
-    private MultiSelectionImage vsyncSelect = new MultiSelectionImage(new Vector2(300f, 300f), scale: 0.25f);
-    private MultiSelectionImage windowModeSelect = new MultiSelectionImage(new Vector2(300f, 400f), scale: 0.25f);
+    private MultiSelectionImage resolutionSelect = new MultiSelectionImage(new Vector2(300f, 100f), 
+        scale: 0.25f);
+    private MultiSelectionImage frameLimitSelect = new MultiSelectionImage(new Vector2(300f, 200f), 
+        scale: 0.25f);
+    private MultiSelectionImage vsyncSelect = new MultiSelectionImage(new Vector2(300f, 300f), 
+        scale: 0.25f);
+    private MultiSelectionImage windowModeSelect = new MultiSelectionImage(new Vector2(300f, 400f), 
+        scale: 0.25f);
 
     public VideoSettingsScene()
       : base("VideoSettings", true)
@@ -34,59 +36,77 @@ namespace ForestPlatformerExample
 
     public override void Load()
     {
-      Image newElement1 = new Image(Assets.GetTexture2D("HUDResolutionLabel"), new Vector2(150f, 50f), scale: 0.25f);
+      Image newElement1 = new Image(Assets.GetTexture2D("HUDResolutionLabel"), 
+          new Vector2(150f, 50f), scale: 0.25f);
+
       this.resolutionSelect.AddOption("720p", Assets.GetTexture2D("HUD720p"));
       this.resolutionSelect.AddOption("1080p", Assets.GetTexture2D("HUD1080p"));
       this.resolutionSelect.AddOption("1440p", Assets.GetTexture2D("HUD1440p"));
       this.resolutionSelect.AddOption("4K", Assets.GetTexture2D("HUD4K"));
-      SelectableImage newElement2 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 100f), scale: 0.02f);
+      SelectableImage newElement2 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), 
+          Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 100f), scale: 0.02f);
       newElement2.OnClick = (Action) (() => this.resolutionSelect.Next());
-      SelectableImage newElement3 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 100f), scale: 0.02f);
+      SelectableImage newElement3 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"),
+          Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 100f), scale: 0.02f);
       newElement3.OnClick = (Action) (() => this.resolutionSelect.Previous());
       newElement2.HoverSoundEffectName = "MenuHover";
       newElement2.SelectSoundEffectName = "MenuSelect";
       newElement3.HoverSoundEffectName = "MenuHover";
       newElement3.SelectSoundEffectName = "MenuSelect";
-      Image newElement4 = new Image(Assets.GetTexture2D("HUDFPSLimitLabel"), new Vector2(150f, 150f), scale: 0.25f);
+      Image newElement4 = new Image(Assets.GetTexture2D("HUDFPSLimitLabel"), 
+          new Vector2(150f, 150f), scale: 0.25f);
       this.frameLimitSelect.AddOption("30", Assets.GetTexture2D("HUD30"));
       this.frameLimitSelect.AddOption("60", Assets.GetTexture2D("HUD60"));
       this.frameLimitSelect.AddOption("120", Assets.GetTexture2D("HUD120"));
       this.frameLimitSelect.AddOption("Unlimited", Assets.GetTexture2D("HUDUnlimited"));
-      SelectableImage newElement5 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 200f), scale: 0.02f);
+      SelectableImage newElement5 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), 
+          Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 200f), scale: 0.02f);
       newElement5.OnClick = (Action) (() => this.frameLimitSelect.Next());
-      SelectableImage newElement6 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 200f), scale: 0.02f);
+      SelectableImage newElement6 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"),
+          Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 200f), scale: 0.02f);
       newElement6.OnClick = (Action) (() => this.frameLimitSelect.Previous());
       newElement5.HoverSoundEffectName = "MenuHover";
       newElement5.SelectSoundEffectName = "MenuSelect";
       newElement6.HoverSoundEffectName = "MenuHover";
       newElement6.SelectSoundEffectName = "MenuSelect";
-      Image newElement7 = new Image(Assets.GetTexture2D("HUDVsyncLabel"), new Vector2(150f, 250f), scale: 0.25f);
+      Image newElement7 = new Image(Assets.GetTexture2D("HUDVsyncLabel"), new Vector2(150f, 250f), 
+          scale: 0.25f);
       this.vsyncSelect.AddOption("On", Assets.GetTexture2D("HUDOn"));
       this.vsyncSelect.AddOption("Off", Assets.GetTexture2D("HUDOff"));
-      SelectableImage newElement8 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 300f), scale: 0.02f);
+      SelectableImage newElement8 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), 
+          Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 300f), scale: 0.02f);
       newElement8.OnClick = (Action) (() => this.vsyncSelect.Next());
-      SelectableImage newElement9 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 300f), scale: 0.02f);
+      SelectableImage newElement9 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), 
+          Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 300f), scale: 0.02f);
       newElement9.OnClick = (Action) (() => this.vsyncSelect.Previous());
       newElement8.HoverSoundEffectName = "MenuHover";
       newElement8.SelectSoundEffectName = "MenuSelect";
       newElement9.HoverSoundEffectName = "MenuHover";
       newElement9.SelectSoundEffectName = "MenuSelect";
-      Image newElement10 = new Image(Assets.GetTexture2D("HUDWindowModeLabel"), new Vector2(150f, 350f), scale: 0.25f);
+      Image newElement10 = new Image(Assets.GetTexture2D("HUDWindowModeLabel"), new Vector2(150f, 350f), 
+          scale: 0.25f);
       this.windowModeSelect.AddOption("Fullscreen", Assets.GetTexture2D("HUDFullscreen"));
       this.windowModeSelect.AddOption("Windowed", Assets.GetTexture2D("HUDWindowed"));
-      SelectableImage newElement11 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 400f), scale: 0.02f);
+
+      SelectableImage newElement11 = new SelectableImage(Assets.GetTexture2D("HUDArrowRightBase"), 
+          Assets.GetTexture2D("HUDArrowRightSelected"), new Vector2(485f, 400f), scale: 0.02f);
+
       newElement11.OnClick = (Action) (() => this.windowModeSelect.Next());
-      SelectableImage newElement12 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 400f), scale: 0.02f);
+      SelectableImage newElement12 = new SelectableImage(Assets.GetTexture2D("HUDArrowLeftBase"), 
+          Assets.GetTexture2D("HUDArrowLeftSelected"), new Vector2(265f, 400f), scale: 0.02f);
+
       newElement12.OnClick = (Action) (() => this.windowModeSelect.Previous());
       newElement11.HoverSoundEffectName = "MenuHover";
       newElement11.SelectSoundEffectName = "MenuSelect";
       newElement12.HoverSoundEffectName = "MenuHover";
       newElement12.SelectSoundEffectName = "MenuSelect";
-      SelectableImage newElement13 = new SelectableImage(Assets.GetTexture2D("HUDCancelBase"), Assets.GetTexture2D("HUDCancelSelected"), new Vector2(150f, 500f), scale: 0.25f);
+      SelectableImage newElement13 = new SelectableImage(Assets.GetTexture2D("HUDCancelBase"), 
+          Assets.GetTexture2D("HUDCancelSelected"), new Vector2(150f, 500f), scale: 0.25f);
       newElement13.HoverSoundEffectName = "MenuHover";
       newElement13.SelectSoundEffectName = "MenuSelect";
       newElement13.OnClick = (Action) (() => this.SceneManager.StartScene("Settings"));
-      SelectableImage newElement14 = new SelectableImage(Assets.GetTexture2D("HUDApplyBase"), Assets.GetTexture2D("HUDApplySelected"), new Vector2(450f, 500f), scale: 0.25f);
+      SelectableImage newElement14 = new SelectableImage(Assets.GetTexture2D("HUDApplyBase"), 
+          Assets.GetTexture2D("HUDApplySelected"), new Vector2(450f, 500f), scale: 0.25f);
       newElement14.HoverSoundEffectName = "MenuHover";
       newElement14.SelectSoundEffectName = "MenuSelect";
       newElement14.OnClick = new Action(this.ApplyConfiguration);

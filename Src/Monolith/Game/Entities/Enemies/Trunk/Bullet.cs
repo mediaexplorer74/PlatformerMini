@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.Bullet
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82

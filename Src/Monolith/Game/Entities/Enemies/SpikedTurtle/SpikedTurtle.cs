@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿
 // Type: ForestPlatformerExample.SpikedTurtle
 // Assembly: PlatformerNetStandard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86D25325-3782-43C4-93B7-88CDEF6FED82
@@ -7,7 +7,7 @@
 using Microsoft.Xna.Framework;
 using MonolithEngine;
 using System;
-
+using System.Diagnostics;
 
 namespace ForestPlatformerExample
 {
@@ -91,7 +91,14 @@ namespace ForestPlatformerExample
 
     private void PlayNext(string nextAnim)
     {
-      this.GetComponent<AnimationStateMachine>().PlayAnimation(nextAnim);
+            try
+            {
+                this.GetComponent<AnimationStateMachine>().PlayAnimation(nextAnim);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[ex] SpikedTurtle error: " + ex.Message);
+            }
       this.SpikesOut = true;
     }
 
