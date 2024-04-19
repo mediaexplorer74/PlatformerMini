@@ -27,7 +27,7 @@ This app requires Visual Studio 2017/2019/2022 Community to run. [Click here to 
 ## Install and run the app
 1. Install **MonoGame 3.8** for Visual Studio from [monogame.net](http://www.monogame.net/)
 2. Clone or download this repository
-3. Open **Mononolith.sln** in Visual Studio.
+3. Open **Monolith.sln** in Visual Studio.
 4. To run the app, press **F5**. To quit, press **ESC**.
 
 ## Learn more about MonoGame UWP gamedev
