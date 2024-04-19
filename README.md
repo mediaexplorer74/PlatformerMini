@@ -15,11 +15,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 
 ![Sony Vaio](Images/shot03.png)
 
-![Sony Vaio](Images/shot04.png)
-
 ![Sony Vaio](Images/shot05.png)
-
-![Sony Vaio](Images/shot06.png)
 
 ![Lumia 950](Images/shot07.png)
 
