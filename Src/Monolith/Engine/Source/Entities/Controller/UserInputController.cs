@@ -9,20 +9,24 @@ using System.Collections.Generic;
 using System.Linq;
 
 
+
 namespace MonolithEngine
 {
   public class UserInputController : IUpdatableComponent, IComponent
   {
     private Dictionary<Keys, bool> pressedKeys = new Dictionary<Keys, bool>();
     private Dictionary<Buttons, bool> pressedButtons = new Dictionary<Buttons, bool>();
-    private Dictionary<UserInputController.KeyMapping, Action> keyPressActions = new Dictionary<UserInputController.KeyMapping, Action>();
+    private Dictionary<UserInputController.KeyMapping, Action> keyPressActions 
+            = new Dictionary<UserInputController.KeyMapping, Action>();
     private Dictionary<Keys, Action> keyReleaseActions = new Dictionary<Keys, Action>();
     private Dictionary<Buttons, Action> buttonReleaseActions = new Dictionary<Buttons, Action>();
     private KeyboardState currentKeyboardState;
     private KeyboardState? prevKeyboardState;
+
     private GamePadState? prevGamepadState;
     private MouseState mouseState;
     private GamePadState currentGamepadState;
+
     private int? prevMouseScrollWheelValue = new int?(0);
     private Action mouseWheelUpAction;
     private Action mouseWheelDownAction;
@@ -42,7 +46,9 @@ namespace MonolithEngine
       bool singlePressOnly = false,
       int pressCooldown = 0)
     {
-      this.keyPressActions.Add(new UserInputController.KeyMapping(new Keys?(key), new Buttons?(controllerButton), singlePressOnly, pressCooldown), action);
+      this.keyPressActions.Add(new UserInputController.KeyMapping(new Keys?(key), 
+          new Buttons?(controllerButton), singlePressOnly, pressCooldown), action);
+
       this.pressedKeys[key] = false;
       this.pressedButtons[controllerButton] = false;
     }
@@ -64,7 +70,8 @@ namespace MonolithEngine
       bool singlePressOnly = false,
       int pressCooldown = 0)
     {
-      this.keyPressActions.Add(new UserInputController.KeyMapping(new Keys?(), new Buttons?(controllerButton), singlePressOnly, pressCooldown), action);
+      this.keyPressActions.Add(new UserInputController.KeyMapping(
+          new Keys?(), new Buttons?(controllerButton), singlePressOnly, pressCooldown), action);
       this.pressedButtons[controllerButton] = false;
     }
 
@@ -74,7 +81,8 @@ namespace MonolithEngine
       bool singlePressOnly = false,
       int pressCooldown = 0)
     {
-      this.keyPressActions.Add(new UserInputController.KeyMapping(new Keys?(key), new Buttons?(), singlePressOnly), action);
+      this.keyPressActions.Add(new UserInputController.KeyMapping(
+          new Keys?(key), new Buttons?(), singlePressOnly), action);
       this.pressedKeys[key] = false;
     }
 
@@ -106,22 +114,29 @@ namespace MonolithEngine
         this.currentKeyboardState = Keyboard.GetState();
         this.mouseState = Mouse.GetState();
         this.currentGamepadState = GamePad.GetState(PlayerIndex.One);
-        foreach (KeyValuePair<UserInputController.KeyMapping, Action> keyPressAction in this.keyPressActions)
+        foreach (KeyValuePair<UserInputController.KeyMapping, Action> keyPressAction 
+                    in this.keyPressActions)
         {
           Keys? key = keyPressAction.Key.Key;
           if (key.HasValue)
           {
             if (this.currentKeyboardState.IsKeyDown(key.Value))
             {
+              //
               if (!Timer.IsSet("INPUTPRESSED_" + key.Value.ToString()))
               {
                 if (keyPressAction.Key.PressCooldown != 0)
-                  Timer.SetTimer("INPUTPRESSED_" + key.Value.ToString(), (float) keyPressAction.Key.PressCooldown);
+                  Timer.SetTimer("INPUTPRESSED_" + key.Value.ToString(), 
+                      (float) keyPressAction.Key.PressCooldown);
+
                 if (keyPressAction.Key.SinglePressOnly && this.prevKeyboardState.HasValue)
                 {
                   KeyboardState? prevKeyboardState = this.prevKeyboardState;
                   KeyboardState currentKeyboardState = this.currentKeyboardState;
-                  if ((prevKeyboardState.HasValue ? (prevKeyboardState.HasValue ? (prevKeyboardState.GetValueOrDefault() == currentKeyboardState ? 1 : 0) : 1) : 0) != 0 || this.pressedKeys[key.Value])
+                  if ((prevKeyboardState.HasValue 
+                     ? (prevKeyboardState.HasValue
+                     ? (prevKeyboardState.GetValueOrDefault() == currentKeyboardState ? 1 : 0) 
+                     : 1) : 0) != 0 || this.pressedKeys[key.Value])
                     continue;
                 }
                 this.pressedKeys[key.Value] = true;
@@ -146,20 +161,24 @@ namespace MonolithEngine
               {
                 GamePadState? prevGamepadState = this.prevGamepadState;
                 GamePadState currentGamepadState = this.currentGamepadState;
-                if ((prevGamepadState.HasValue ? (prevGamepadState.HasValue ? (prevGamepadState.GetValueOrDefault() == currentGamepadState ? 1 : 0) : 1) : 0) != 0 || this.pressedButtons[button.Value])
+                if ((prevGamepadState.HasValue ? (prevGamepadState.HasValue 
+                                    ? (prevGamepadState.GetValueOrDefault() == currentGamepadState 
+                                    ? 1 : 0) : 1) : 0) != 0 || this.pressedButtons[button.Value])
                   continue;
               }
               if (!Timer.IsSet("INPUTPRESSED_" + button.Value.ToString()))
               {
                 if (keyPressAction.Key.PressCooldown != 0)
-                  Timer.SetTimer("INPUTPRESSED_" + button.Value.ToString(), (float) keyPressAction.Key.PressCooldown);
+                  Timer.SetTimer("INPUTPRESSED_" + button.Value.ToString(),
+                      (float) keyPressAction.Key.PressCooldown);
                 this.pressedButtons[button.Value] = true;
                 keyPressAction.Value();
               }
             }
             else
             {
-              if (this.pressedButtons[button.Value] && this.buttonReleaseActions.ContainsKey(button.Value))
+              if (this.pressedButtons[button.Value] 
+                                && this.buttonReleaseActions.ContainsKey(button.Value))
                 this.buttonReleaseActions[button.Value]();
               this.pressedButtons[button.Value] = false;
             }
@@ -167,16 +186,24 @@ namespace MonolithEngine
         }
         this.prevKeyboardState = new KeyboardState?(this.currentKeyboardState);
         this.prevGamepadState = new GamePadState?(this.currentGamepadState);
+
+        //TEST
         int scrollWheelValue1 = this.mouseState.ScrollWheelValue;
+
         int? scrollWheelValue2 = this.prevMouseScrollWheelValue;
         int valueOrDefault1 = scrollWheelValue2.GetValueOrDefault();
+
         if (scrollWheelValue1 > valueOrDefault1 & scrollWheelValue2.HasValue)
         {
           if (this.mouseWheelUpAction == null)
             return;
           int scrollWheelValue3 = this.mouseState.ScrollWheelValue;
           int? scrollWheelValue4 = this.prevMouseScrollWheelValue;
-          float? nullable = scrollWheelValue4.HasValue ? new float?((float) (scrollWheelValue3 - scrollWheelValue4.GetValueOrDefault())) : new float?();
+
+          float? nullable = scrollWheelValue4.HasValue 
+           ? new float?((float) (scrollWheelValue3 - scrollWheelValue4.GetValueOrDefault())) 
+           : new float?();
+
           float scrollThreshold = this.scrollThreshold;
           if (!((double) nullable.GetValueOrDefault() >= (double) scrollThreshold & nullable.HasValue))
             return;
@@ -188,11 +215,17 @@ namespace MonolithEngine
           int scrollWheelValue5 = this.mouseState.ScrollWheelValue;
           int? scrollWheelValue6 = this.prevMouseScrollWheelValue;
           int valueOrDefault2 = scrollWheelValue6.GetValueOrDefault();
-          if (!(scrollWheelValue5 < valueOrDefault2 & scrollWheelValue6.HasValue) || this.mouseWheelDownAction == null)
+
+          if (!(scrollWheelValue5 < valueOrDefault2 & scrollWheelValue6.HasValue) 
+                        || this.mouseWheelDownAction == null)
             return;
           scrollWheelValue6 = this.prevMouseScrollWheelValue;
           int scrollWheelValue7 = this.mouseState.ScrollWheelValue;
-          float? nullable = scrollWheelValue6.HasValue ? new float?((float) (scrollWheelValue6.GetValueOrDefault() - scrollWheelValue7)) : new float?();
+
+          float? nullable = scrollWheelValue6.HasValue 
+            ? new float?((float) (scrollWheelValue6.GetValueOrDefault() - scrollWheelValue7)) 
+            : new float?();
+
           float scrollThreshold = this.scrollThreshold;
           if (!((double) nullable.GetValueOrDefault() >= (double) scrollThreshold & nullable.HasValue))
             return;
@@ -219,7 +252,8 @@ namespace MonolithEngine
       public bool SinglePressOnly;
       public int PressCooldown;
 
-      public KeyMapping(Keys? key, Buttons? button, bool singlePressOnly = false, int pressCooldown = 0)
+      public KeyMapping(Keys? key, Buttons? button, bool singlePressOnly = false, 
+          int pressCooldown = 0)
       {
         this.Key = key;
         this.Button = button;
@@ -237,7 +271,9 @@ namespace MonolithEngine
           {
             Buttons? button1 = this.Button;
             Buttons? button2 = keyMapping.Button;
-            if (button1.GetValueOrDefault() == button2.GetValueOrDefault() & button1.HasValue == button2.HasValue && this.SinglePressOnly == keyMapping.SinglePressOnly)
+            if (button1.GetValueOrDefault() == button2.GetValueOrDefault() 
+                            & button1.HasValue == button2.HasValue
+                            && this.SinglePressOnly == keyMapping.SinglePressOnly)
               return this.PressCooldown == keyMapping.PressCooldown;
           }
         }
@@ -246,7 +282,8 @@ namespace MonolithEngine
 
       public override int GetHashCode()
       {
-        return HashCode.Combine<Keys?, Buttons?, bool, int>(this.Key, this.Button, this.SinglePressOnly, this.PressCooldown);
+        return HashCode.Combine<Keys?, Buttons?, bool, int>(this.Key, 
+            this.Button, this.SinglePressOnly, this.PressCooldown);
       }
     }
   }

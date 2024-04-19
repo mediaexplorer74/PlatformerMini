@@ -241,7 +241,7 @@ namespace ForestPlatformerExample
                 new MovingPlatform(scene, mp.Item1, mp.Item2, mp.Item3);
             }
 
-#if DEBUG
+#if false//DEBUG
             
              PhysicalEntity collisionTest = new PhysicalEntity(scene.LayerManager.EntityLayer, null, new Vector2(17, 37) * Config.GRID)
              {

@@ -69,7 +69,11 @@ namespace MonolithEngine
         {
           Layer.GraphicsDeviceManager.GraphicsDevice.Viewport = camera.Viewport;
           this.Scene.CurrentCamera = camera;
-          spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: new Matrix?(camera.GetWorldTransformMatrix(this.scrollSpeedModifier, this.lockY)));
+
+          spriteBatch.Begin(samplerState: SamplerState.PointClamp, 
+              transformMatrix: new Matrix?(camera.GetWorldTransformMatrix(this.scrollSpeedModifier, 
+              this.lockY)));
+
           foreach (Entity visibleObject in this.visibleObjects)
           {
             if (visibleObject.Visible)

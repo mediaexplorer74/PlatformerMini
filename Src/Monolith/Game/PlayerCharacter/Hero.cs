@@ -12,7 +12,7 @@ namespace ForestPlatformerExample
 {
     class Hero : PhysicalEntity
     {
-        private readonly float JUMP_RATE = 0.1f;
+        private readonly float JUMP_RATE = 0.1f;//0.1f;
         private readonly float SLIDE_FORCE = 1f;
 
         private static double lastJump = 0f;
@@ -105,6 +105,18 @@ namespace ForestPlatformerExample
             }
         }
 
+        internal void JumpRelease()
+        {
+            //throw new NotImplementedException();
+            //canDoubleJump = true;
+            //doubleJumping = true;
+        }
+
+        internal void AttackOrThrowRelease()
+        {
+            //throw new NotImplementedException();
+        }
+
         private Fan fan;
 
         UserInputController UserInput;
@@ -164,8 +176,8 @@ namespace ForestPlatformerExample
             CurrentFaceDirection = Direction.EAST;
 
             fist = new Fist(scene, this, new Vector2(20, -10));
-#if DEBUG_SHOW_RAYCAST
-            if (DEBUG_SHOW_RAYCAST)
+#if true//DEBUG_SHOW_RAYCAST
+            if (true)//(DEBUG_SHOW_RAYCAST)
             {
                 /*if (RayBlockerLines == null)
                 {
@@ -305,12 +317,18 @@ namespace ForestPlatformerExample
                 }
             };
 
-            bool isRunningCarryRight() => Transform.VelocityX >= 0.1f && !Scene.GridCollisionChecker.HasBlockingColliderAt(this, Direction.EAST) && isCarryingItem;
-            Animations.RegisterAnimation("RunningCarryRight", runningCarryRight, isRunningCarryRight, 1);
+            bool isRunningCarryRight() => Transform.VelocityX >= 0.1f 
+                && !Scene.GridCollisionChecker.HasBlockingColliderAt(this, Direction.EAST) 
+                && isCarryingItem;
+            Animations.RegisterAnimation("RunningCarryRight", runningCarryRight, 
+                isRunningCarryRight, 1);
 
             SpriteSheetAnimation runningCarryLeft = runningCarryRight.CopyFlipped();
-            bool isRunningCarryLeft() => Transform.VelocityX <= -0.1f && !Scene.GridCollisionChecker.HasBlockingColliderAt(this, Direction.WEST) && isCarryingItem;
-            Animations.RegisterAnimation("RunningCarryLeft", runningCarryLeft, isRunningCarryLeft, 1);
+            bool isRunningCarryLeft() => Transform.VelocityX <= -0.1f && 
+                !Scene.GridCollisionChecker.HasBlockingColliderAt(this, Direction.WEST) 
+                && isCarryingItem;
+            Animations.RegisterAnimation("RunningCarryLeft", runningCarryLeft, 
+                isRunningCarryLeft, 1);
 
             /*SpriteSheetAnimation walkingCarryLeft = new SpriteSheetAnimation(this, Assets.GetTexture("HeroRunWithItem"), 12, SpriteEffects.FlipHorizontally);
             walkingCarryLeft.StartedCallback = () =>
@@ -349,11 +367,13 @@ namespace ForestPlatformerExample
             {
                 Looping = false
             };
-            bool isCarryJumpingRight() => FallSpeed > 0f && CurrentFaceDirection == Direction.EAST && isCarryingItem;
+            bool isCarryJumpingRight() => FallSpeed > 0f && CurrentFaceDirection == Direction.EAST
+                && isCarryingItem;
             Animations.RegisterAnimation("CarryJumpingRight", jumpCarryRight, isCarryJumpingRight, 2);
 
             SpriteSheetAnimation jumpCarryLeft = jumpCarryRight.CopyFlipped();
-            bool isCarryJumpingLeft() => FallSpeed > 0f && CurrentFaceDirection == Direction.WEST && isCarryingItem;
+            bool isCarryJumpingLeft() => FallSpeed > 0f && CurrentFaceDirection == Direction.WEST 
+                && isCarryingItem;
             Animations.RegisterAnimation("JumpingCarryLeft", jumpCarryLeft, isCarryJumpingLeft, 2);
 
             Animations.AddFrameTransition("CarryJumpingRight", "JumpingCarryLeft");
@@ -368,21 +388,27 @@ namespace ForestPlatformerExample
             bool isWallSlidingLeft() => isWallSliding && CurrentFaceDirection == Direction.WEST;
             Animations.RegisterAnimation("WallSlideLeft", wallSlideLeft, isWallSlidingLeft, 6);
 
-            SpriteSheetAnimation doubleJumpRight = new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroDoubleJump"), 12)
+            SpriteSheetAnimation doubleJumpRight = new SpriteSheetAnimation(this, 
+                Assets.GetAnimationTexture("HeroDoubleJump"), 12)
             {
                 StartFrame = 12,
                 EndFrame = 16
             };
-            bool isDoubleJumpingRight() => !IsOnGround && Transform.VelocityY != 0 && doubleJumping && CurrentFaceDirection == Direction.EAST;
-            Animations.RegisterAnimation("DoubleJumpingRight", doubleJumpRight, isDoubleJumpingRight, 3);
+            bool isDoubleJumpingRight() => !IsOnGround && Transform.VelocityY != 0 
+                && doubleJumping && CurrentFaceDirection == Direction.EAST;
+            Animations.RegisterAnimation("DoubleJumpingRight", doubleJumpRight, 
+                isDoubleJumpingRight, 3);
 
             SpriteSheetAnimation doubleJumpLeft = doubleJumpRight.CopyFlipped();
-            bool isDoubleJumpingLeft() => !IsOnGround && Transform.VelocityY != 0 && doubleJumping && CurrentFaceDirection == Direction.WEST;
+
+            bool isDoubleJumpingLeft() => !IsOnGround && Transform.VelocityY != 0
+                && doubleJumping && CurrentFaceDirection == Direction.WEST;
             Animations.RegisterAnimation("DoubleJumpingLeft", doubleJumpLeft, isDoubleJumpingLeft, 3);
 
             Animations.AddFrameTransition("DoubleJumpingRight", "DoubleJumpingLeft");
 
-            SpriteSheetAnimation climb = new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroClimb"), 40);
+            SpriteSheetAnimation climb = new SpriteSheetAnimation(
+                this, Assets.GetAnimationTexture("HeroClimb"), 40);
 
             climb.EveryFrameAction = (frame) =>
             {
@@ -438,11 +464,13 @@ namespace ForestPlatformerExample
                 StartFrame = 9,
                 EndFrame = 11
             };
-            bool isFallingRight() => fan != null || (HasGravity && Transform.VelocityY > 0.1 && CurrentFaceDirection == Direction.EAST && !isCarryingItem);
+            bool isFallingRight() => fan != null || (HasGravity && Transform.VelocityY > 0.1
+                && CurrentFaceDirection == Direction.EAST && !isCarryingItem);
             Animations.RegisterAnimation("FallingRight", fallingRight, isFallingRight, 5);
 
             SpriteSheetAnimation fallingLeft = fallingRight.CopyFlipped();
-            bool isFallingLeft() => fan != null || (HasGravity && Transform.VelocityY > 0.1 && CurrentFaceDirection == Direction.WEST && !isCarryingItem);
+            bool isFallingLeft() => fan != null || (HasGravity && Transform.VelocityY > 0.1 
+                && CurrentFaceDirection == Direction.WEST && !isCarryingItem);
             Animations.RegisterAnimation("FallingLeft", fallingLeft, isFallingLeft, 5);
 
             Animations.AddFrameTransition("FallingRight", "FallingLeft");
@@ -452,16 +480,19 @@ namespace ForestPlatformerExample
                 StartFrame = 9,
                 EndFrame = 11
             };
-            bool isCarryFallingRight() => HasGravity && Transform.VelocityY > 0.1 && CurrentFaceDirection == Direction.EAST && isCarryingItem;
+            bool isCarryFallingRight() => HasGravity && Transform.VelocityY > 0.1
+                && CurrentFaceDirection == Direction.EAST && isCarryingItem;
             Animations.RegisterAnimation("CarryFallingRight", fallingCarryRight, isCarryFallingRight, 5);
 
             SpriteSheetAnimation fallingCarryLeft = fallingCarryRight.CopyFlipped();
-            bool isCarryFallingLeft() => HasGravity && Transform.VelocityY > 0.1 && CurrentFaceDirection == Direction.WEST && isCarryingItem;
+            bool isCarryFallingLeft() => HasGravity && Transform.VelocityY > 0.1 
+                && CurrentFaceDirection == Direction.WEST && isCarryingItem;
             Animations.RegisterAnimation("CarryFallingLeft", fallingCarryLeft, isCarryFallingLeft, 5);
 
             Animations.AddFrameTransition("CarryFallingRight", "CarryFallingLeft");
 
-            SpriteSheetAnimation attackRight = new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroAttack"), 48)
+            SpriteSheetAnimation attackRight =
+                new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroAttack"), 48)
             {
                 Looping = false
             };
@@ -470,7 +501,8 @@ namespace ForestPlatformerExample
             SpriteSheetAnimation attackLeft = attackRight.CopyFlipped();
             Animations.RegisterAnimation("AttackLeft", attackLeft, () => false, 8);
 
-            SpriteSheetAnimation pickupRight = new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroPickup"), 24)
+            SpriteSheetAnimation pickupRight =
+                new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroPickup"), 24)
             {
                 Looping = false,
                 StartedCallback = () => UserInput.ControlsDisabled = true,
@@ -485,7 +517,8 @@ namespace ForestPlatformerExample
             SpriteSheetAnimation pickupLeft = pickupRight.CopyFlipped();
             Animations.RegisterAnimation("PickupLeft", pickupLeft, () => false);
 
-            SpriteSheetAnimation slideRight = new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroSlide"), 24)
+            SpriteSheetAnimation slideRight = 
+                new SpriteSheetAnimation(this, Assets.GetAnimationTexture("HeroSlide"), 24)
             {
                 Looping = false
             };
@@ -591,7 +624,8 @@ namespace ForestPlatformerExample
             }
             if (slideDirection != direction)
             {
-                Transform.VelocityX += mul * MovementSpeed * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
+                Transform.VelocityX += mul * MovementSpeed 
+                    * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
             }
             CurrentFaceDirection = direction;
             fist.ChangeDirection();
@@ -606,16 +640,18 @@ namespace ForestPlatformerExample
             }
             if (canJump)
             {
+                //canDoubleJump = true; // !
                 if (!isCarryingItem)
                 {
                     canDoubleJump = true;
                 }
-                canJump = false;
+                canJump = false; //!
             }
             else
             {
                 if (lastJump < JUMP_RATE)
                 {
+                    //RnD
                     return;
                 }
                 lastJump = 0f;
@@ -645,7 +681,8 @@ namespace ForestPlatformerExample
                 return;
             }
 
-            Transform.VelocityY -= MovementSpeed * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
+            Transform.VelocityY -= MovementSpeed 
+                * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
         }
 
         private bool descended = false;
@@ -672,7 +709,8 @@ namespace ForestPlatformerExample
                     LeaveLadder();
                     return;
                 }
-                Transform.VelocityY += MovementSpeed * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
+                Transform.VelocityY += MovementSpeed
+                    * (float)Globals.GameTime.ElapsedGameTime.TotalSeconds * Config.TIME_OFFSET;
             }
         }
 
@@ -697,7 +735,8 @@ namespace ForestPlatformerExample
         {
             if (isCarryingItem)
             {
-                (carriedItem as Entity).GetComponent<AnimationStateMachine>().Offset = originalAnimOffset;
+                (carriedItem as Entity).GetComponent<AnimationStateMachine>().Offset 
+                    = originalAnimOffset;
                 Vector2 force;
                 if (CurrentFaceDirection == Direction.WEST)
                 {
@@ -868,8 +907,10 @@ namespace ForestPlatformerExample
         protected override void SetRayBlockers()
         {
             RayBlockerLines.Clear();
-            RayBlockerLines.Add((new Vector2(Transform.X - Config.GRID / 2, Transform.Y - 10), new Vector2(Transform.X + Config.GRID / 2, Transform.Y - 10)));
-            RayBlockerLines.Add((new Vector2(Transform.X, Transform.Y - Config.GRID / 2 - 10), new Vector2(Transform.X, Transform.Y + Config.GRID / 2 - 10)));
+            RayBlockerLines.Add((new Vector2(Transform.X - Config.GRID / 2, Transform.Y - 10),
+                new Vector2(Transform.X + Config.GRID / 2, Transform.Y - 10)));
+            RayBlockerLines.Add((new Vector2(Transform.X, Transform.Y - Config.GRID / 2 - 10), 
+                new Vector2(Transform.X, Transform.Y + Config.GRID / 2 - 10)));
         }
 
         public void EnterLadder(Ladder ladder)
@@ -889,7 +930,8 @@ namespace ForestPlatformerExample
 
         private void ExitLadderMovement()
         {
-            if (Ladder != null && Ladder.Transform.Position.Y > Transform.Y && Transform.VelocityY < 0)
+            if (Ladder != null && Ladder.Transform.Position.Y > Transform.Y 
+                && Transform.VelocityY < 0)
             {
                 Transform.VelocityY -= Config.JUMP_FORCE;
             }
@@ -907,7 +949,8 @@ namespace ForestPlatformerExample
             Ladder = null;
         }
 
-        private void Hit(IGameObject otherCollider, bool usePositionCheck = true, Vector2 forceRightFacing = default)
+        private void Hit(IGameObject otherCollider, bool usePositionCheck = true, 
+            Vector2 forceRightFacing = default)
         {
             if (Timer.IsSet("Invincible"))
             {
@@ -919,8 +962,12 @@ namespace ForestPlatformerExample
             DropCurrentItem();
             UserInput.ControlsDisabled = true;
             Timer.SetTimer("Invincible", (float)TimeSpan.FromSeconds(1).TotalMilliseconds, true);
-            Timer.TriggerAfter((float)TimeSpan.FromSeconds(0.5).TotalMilliseconds, () => UserInput.ControlsDisabled = false);
-            Timer.TriggerAfter((float)TimeSpan.FromSeconds(0.5).TotalMilliseconds, () => canAttack = true);
+
+            Timer.TriggerAfter((float)TimeSpan.FromSeconds(0.5).TotalMilliseconds,
+                () => UserInput.ControlsDisabled = false);
+
+            Timer.TriggerAfter((float)TimeSpan.FromSeconds(0.5).TotalMilliseconds, 
+                () => canAttack = true);
 
             if (CurrentFaceDirection == Direction.WEST)
             {
@@ -972,14 +1019,18 @@ namespace ForestPlatformerExample
                         Hit(otherCollider);
                         return;
                     }
-                    float angle = MathUtil.DegreeFromVectors(Transform.Position, otherCollider.Transform.Position);
-                    if (Transform.VelocityY > 0 && angle <= 155 && angle >= 25 && !Timer.IsSet("Invincible"))
+                    float angle = MathUtil.DegreeFromVectors(Transform.Position, 
+                        otherCollider.Transform.Position);
+
+                    if (Transform.VelocityY > 0 && angle <= 155 && angle >= 25 
+                        && !Timer.IsSet("Invincible"))
                     {
                         Transform.VelocityY = 0;
                         Bump(new Vector2(0, -0.5f));
                         FallSpeed = 0;
                         (otherCollider as AbstractEnemy).Hit(Direction.NORTH);
-                        Timer.SetTimer("Invincible", (float)TimeSpan.FromSeconds(0.5).TotalMilliseconds, true);
+                        Timer.SetTimer("Invincible", 
+                            (float)TimeSpan.FromSeconds(0.5).TotalMilliseconds, true);
                         canJump = false;
                         canDoubleJump = true;
                     }
@@ -1006,7 +1057,9 @@ namespace ForestPlatformerExample
                 coinEffect.AddCoin(otherCollider.Transform.Position);
                 (otherCollider as Coin).Die();
             }
-            else if (otherCollider is Box && (otherCollider as Box).Transform.Velocity == Vector2.Zero && Transform.Y < otherCollider.Transform.Y)
+            else if (otherCollider is Box 
+                && (otherCollider as Box).Transform.Velocity == Vector2.Zero 
+                && Transform.Y < otherCollider.Transform.Y)
             {
                 AudioEngine.Play("BoxBounceSound");
                 Transform.VelocityY = 0;
@@ -1017,7 +1070,8 @@ namespace ForestPlatformerExample
             else if (otherCollider is Spikes)
             {
                 Direction spikeDirection = (otherCollider as Spikes).Direction;
-                if (spikeDirection != Direction.SOUTH || (spikeDirection == Direction.SOUTH && !isSliding))
+                if (spikeDirection != Direction.SOUTH 
+                    || (spikeDirection == Direction.SOUTH && !isSliding))
                 {
                     Hit(otherCollider, true, new Vector2(0, -1.5f));
                 }

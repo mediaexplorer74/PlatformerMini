@@ -43,8 +43,8 @@ namespace MonolithEngine
       this.Content.RootDirectory = "Content";
       this.IsMouseVisible = true;
       Config.GRAVITY_ON = true;
-      Config.GRAVITY_FORCE = 0.3f;
-      Config.JUMP_FORCE = 1f;
+      Config.GRAVITY_FORCE = 0.1f;//0.3f;
+      Config.JUMP_FORCE = 6f; //1f;
       Config.INCREASING_GRAVITY = true;
       Config.FIXED_UPDATE_FPS = 30;
       Globals.FixedUpdateMultiplier = 1f;
@@ -68,11 +68,11 @@ namespace MonolithEngine
       this.graphics.IsFullScreen = VideoConfiguration.FULLSCREEN;
 
        //RnD
-       Config.SCALE_X = (1 == 1)//!MonolithGame.Platform.IsMobile() 
+       Config.SCALE_X = (1 == 0)//!MonolithGame.Platform.IsMobile() 
         ? (float) ((double) VideoConfiguration.RESOLUTION_WIDTH / 1920.0  * 1.4/*2.0*/)
-        : (float) ((double) VideoConfiguration.RESOLUTION_HEIGHT / 1920.0 * 2.5/*2.7999999523162842*/);
+        : (float) ((double) VideoConfiguration.RESOLUTION_HEIGHT / 1920.0 * 2.2/*2.7999999523162842*/);
 
-       Config.SCALE_Y = (1 == 1)//!MonolithGame.Platform.IsMobile() 
+       Config.SCALE_Y = (1 == 0)//!MonolithGame.Platform.IsMobile() 
         ? (float)((double)VideoConfiguration.RESOLUTION_WIDTH / 1920.0 * 4.2/*2.0*/)
         : (float)((double)VideoConfiguration.RESOLUTION_HEIGHT / 1920.0 * 3/*2.7999999523162842*/);
 

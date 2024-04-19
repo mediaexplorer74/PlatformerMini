@@ -72,9 +72,9 @@ namespace MonolithEngine
         {
             TouchCollection prevTouchState = this.prevTouchState;
 
-            //if( this.prevTouchState.Count == 0
-            //    && this.selectedElement is SelectableUIElement  )
-            //    (this.selectedElement as SelectableUIElement).OnClick();
+            if( this.prevTouchState.Count == 0
+                && this.selectedElement is SelectableUIElement  )
+                (this.selectedElement as SelectableUIElement).OnClick();
 
             foreach (IUIElement element in this.elements)
                 element.Update(this.currentTouchState

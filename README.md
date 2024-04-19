@@ -43,7 +43,9 @@ https://pixelfrog-assets.itch.io
 Link: https://lajbert.itch.io/platformer-demo
 
 ## Known bugs
-If you decide to use PC Mode You may notice some game screen distortions. The problem that is IsMobile function always returns true... It must be fixed manually: replace true on false... and tweak SCALE_X and SCALE_Y to your own better values...  
+- If you decide to use PC Mode You may notice some game screen distortions. The problem that is IsMobile function always returns true... It must be fixed manually: replace true on false... and tweak SCALE_X and SCALE_Y to your own better values...  
+- No game scene scaling on sersor screen. TouchPanelSwipe not coded yet.
+- Low gravity (Hyper-jumping). This is powered on only for game process debug symplify :)
 
 ## References
 

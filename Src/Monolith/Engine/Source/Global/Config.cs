@@ -18,9 +18,9 @@ namespace MonolithEngine
     public static float BUMP_FRICTION = 0.7f;
 
     public static bool GRAVITY_ON = true;
-    public static float GRAVITY_FORCE = 8f;
+    public static float GRAVITY_FORCE = 2f;//8f;
 
-    public static float JUMP_FORCE = 3f;
+    public static float JUMP_FORCE = 6f;//3f;
     public static float GRAVITY_T_MULTIPLIER = 1f;
     public static float DYNAMIC_COLLISION_CHECK_FREQUENCY = 1f;
     public static bool INCREASING_GRAVITY = true;

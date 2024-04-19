@@ -120,6 +120,7 @@
     <Compile Include="Engine\Source\Components\IComponent.cs" />
     <Compile Include="Engine\Source\Entities\Abstract\GameObject.cs" />
     <Compile Include="Engine\Source\Entities\Abstract\IGameObject.cs" />
+    <Compile Include="Engine\Source\Entities\Controller\HashCode.cs" />
     <Compile Include="Engine\Source\Entities\Controller\UserInputController.cs" />
     <Compile Include="Engine\Source\Entities\Direction.cs" />
     <Compile Include="Engine\Source\Entities\Entity.cs" />
@@ -213,7 +214,6 @@
     <Compile Include="Engine\Source\Util\Flag.cs" />
     <Compile Include="Engine\Source\Util\FrameCounter.cs" />
     <Compile Include="Engine\Source\Util\GridUtil.cs" />
-    <Compile Include="Engine\Source\Util\HashCode.cs" />
     <Compile Include="Engine\Source\Util\IAnimation.cs" />
     <Compile Include="Engine\Source\Util\IColliderEntity.cs" />
     <Compile Include="Engine\Source\Util\IDrawableComponent.cs" />
