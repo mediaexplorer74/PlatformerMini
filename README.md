@@ -22,6 +22,7 @@ This is my experiment to improve Monolith Engine via my experimental PlatformMin
 - Design folder added (use it via LDtk level editor)
 - Level 3 (Draft) added for my better game mechanics exploring ;)
 - AI only created GameWorld "template" with Load / Save methods at now :) 
+- When I connected tweaked Monogame, no problem with RenderTarget2D (width > 4000) :)
 
 ## Requirements
 This app requires Visual Studio 2017/2019/2022 Community to run. [Click here to learn how to get set up with Visual Studio](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
@@ -49,7 +50,7 @@ Link: https://lajbert.itch.io/platformer-demo
 - No game scene scaling on sersor screen. TouchPanelSwipe not coded yet.
 - Level 3 (in Level select menu) has incorrected xbf files (copy of level2)
 - Low gravity (Hyper-jumping). This is powered on only for game process debug symplify :)
-- On W10M Astoria, this app still not operable... so strange (too huge resources? kbd/touchpalen handling errors?)
+- On W10M Astoria, this app still not operable... so strange (too huge resources? some kbd/touchpanel handling errors??)
 
 ## References
 

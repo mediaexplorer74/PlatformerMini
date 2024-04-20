@@ -66,7 +66,7 @@ namespace ForestPlatformerExample
       this.hero = entityParser.GetHero();
 
       //  Mobile
-      if (1==0)//(MonolithGame.Platform.IsMobile())
+      if (1==1)//(MonolithGame.Platform.IsMobile())
       {
             foreach (IUIElement button in new MobileButtonPanel(this.hero).GetButtons())
             this.UI.AddUIElement(button);
