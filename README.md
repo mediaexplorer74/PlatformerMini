@@ -11,11 +11,7 @@ This is my experiment to improve Monolith Engine via my experimental PlatformMin
 
 ## Screenshot(s)
 
-![Sony Vaio](Images/shot02.png)
-
-![Sony Vaio](Images/shot03.png)
-
-![Lumia 950](Images/shot07.png)
+![VS & Codeium AI](Images/ai.png)
 
 
 ## Features / My experimentation(s)
