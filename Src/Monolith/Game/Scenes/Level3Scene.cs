@@ -43,10 +43,11 @@ namespace ForestPlatformerExample
       {
         camera.Initialize();
 
-        if (MonolithGame.Platform.IsMobile())
+        //RnD
+        if (1==1)//(MonolithGame.Platform.IsMobile())
         {
           camera.Zoom += 0.5f;
-          camera.Zoom *= 2f;
+          //camera.Zoom *= 2f;
         }
         else
           camera.Zoom += 0.5f;
@@ -74,7 +75,7 @@ namespace ForestPlatformerExample
       this.hero = entityParser.GetHero();
 
       //Mobile
-      if (1==0)//(MonolithGame.Platform.IsMobile())
+      if (1==1)//(MonolithGame.Platform.IsMobile())
       {
         foreach (IUIElement button in new MobileButtonPanel(this.hero).GetButtons())
           this.UI.AddUIElement(button);

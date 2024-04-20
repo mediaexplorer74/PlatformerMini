@@ -27,7 +27,7 @@ namespace MonolithEngine
             try
             {
                 this.renderTarget = new RenderTarget2D(TileGroup.GraphicsDevice,
-                    width <= 4000 ? width : 4000,
+                    width,// <= 4000 ? width : 4000,
                     height,
                     true,// if false, then no caching but max width is only 4000 (?)
                     TileGroup.GraphicsDevice.PresentationParameters.BackBufferFormat,

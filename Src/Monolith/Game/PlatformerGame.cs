@@ -34,7 +34,7 @@ namespace ForestPlatformerExample
       Logger.Info("Launching game...");
       this.font = this.Content.Load<SpriteFont>("Fonts/DefaultFont");
       Logger.LogToFile = true;
-      Logger.Info("Graphics adapter: " + GraphicsAdapter.DefaultAdapter.Description);
+      Logger.Info("Graphics adapter: " + GraphicsAdapter.DefaultAdapter.ToString());//.Description);
       int width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
       int height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 

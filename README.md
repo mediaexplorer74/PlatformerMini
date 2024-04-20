@@ -1,4 +1,4 @@
-# PlatformerMini v1.0.x - ai branch ("uwp ai dev")
+# PlatformerMini v1.1.1 - dev branch
 
 ## About 
 This is my experiment to improve Monolith Engine via my experimental PlatformMini UWP app for W10M Astoria :) 
@@ -8,11 +8,12 @@ This is my experiment to improve Monolith Engine via my experimental PlatformMin
 - Monolith Engine tweaked (it incapsulated into Engine folder).
 - Game tweaked a little too (it incapsulated into Game folder because of monolith structure)))
 - Special Microsoft VisualStudio 2022 Preview + Codieum AI used ;)
+- My special tweaked, W10M Astoria-friendly Monogame2D "meta-library" connected!
 
 ## Screenshot(s)
 
-![VS & Codeium AI](Images/ai.png)
-
+![](Images/shot01.png)
+![](Images/shot02.png)
 
 ## Features / My experimentation(s)
 - Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
@@ -48,6 +49,7 @@ Link: https://lajbert.itch.io/platformer-demo
 - No game scene scaling on sersor screen. TouchPanelSwipe not coded yet.
 - Level 3 (in Level select menu) has incorrected xbf files (copy of level2)
 - Low gravity (Hyper-jumping). This is powered on only for game process debug symplify :)
+- On W10M Astoria, this app still not operable... so strange (too huge resources? kbd/touchpalen handling errors?)
 
 ## References
 

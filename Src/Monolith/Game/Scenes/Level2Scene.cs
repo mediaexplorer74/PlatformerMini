@@ -43,10 +43,10 @@ namespace ForestPlatformerExample
         camera.Initialize();
 
         //RnD
-        if (1==0)//(MonolithGame.Platform.IsMobile())
+        if (1==1)//(MonolithGame.Platform.IsMobile())
         {
           camera.Zoom += 0.5f;
-          camera.Zoom *= 2f;
+          //camera.Zoom *= 2f;
         }
         else
           camera.Zoom += 0.5f;

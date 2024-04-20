@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <PackageCertificateThumbprint>
@@ -289,7 +289,7 @@
     <Compile Include="Game\Scenes\Level3Scene.cs" />
     <Compile Include="Game\Scenes\Level1Scene.cs" />
     <Compile Include="Game\Scenes\Level2Scene.cs" />
-    <Compile Include="Game\Scenes\LevelSelectScreen.cs" />
+    <Compile Include="Game\Scenes\LevelSelectScreenScene.cs" />
     <Compile Include="Game\Scenes\LoadingScreenScene.cs" />
     <Compile Include="Game\Scenes\MainMenuScene.cs" />
     <Compile Include="Game\Scenes\PauseMenuScene.cs" />
@@ -348,9 +348,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
-    </PackageReference>
-    <PackageReference Include="MonoGame.Framework.WindowsUniversal">
-      <Version>3.8.0.1641</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
@@ -830,6 +827,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Monolith_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj">
+      <Project>{09c41a48-7bf3-4a46-9eb8-ce95b4c27ca9}</Project>
+      <Name>MonoGame.Framework.WindowsUAP</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

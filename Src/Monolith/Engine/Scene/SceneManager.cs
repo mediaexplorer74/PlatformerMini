@@ -164,7 +164,15 @@ namespace MonolithEngine
 
     internal void Draw(SpriteBatch spriteBatch)
     {
-      this.graphicsDevice.Clear(this.currentScene.BackgroundColor);
+      //RnD 
+      if (this.currentScene != null)
+            this.graphicsDevice.Clear(this.currentScene.BackgroundColor);
+      else
+      {
+         Debug.WriteLine("[ex] (SceneManager) currentScene is null!");
+         return;
+      }
+
       if (this.useLoadingScreen && this.loadingScreen != null)
       {
         this.isLoading = true;
