@@ -100,9 +100,8 @@ namespace ForestPlatformerExample
     }
 
     public override void OnFinished()
-        {
-        //this.SceneManager.LoadScene("Level_1"); // go to level 1 ))
+    {       
         this.SceneManager.LoadScene("EndScene"); // GAME OVER :)
-        }
+    }
   }
 }

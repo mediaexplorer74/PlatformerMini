@@ -1,21 +1,19 @@
-# PlatformerMini v1.0.3 - uwp branch
+# PlatformerMini v1.0.x - ai branch ("uwp ai dev")
 
 ## About 
-This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria :) This is my "UWP fork" of some interesting (but archived) small & lightweight 2D video game engine named MonolithEngine.
+This is my experiment to improve Monolith Engine via my experimental PlatformMini UWP app for W10M Astoria :) 
 
 ## Tech details
 - Target: Windows UWP (some mobile ui elements present for "touch ui").
 - Monolith Engine tweaked (it incapsulated into Engine folder).
 - Game tweaked a little too (it incapsulated into Game folder because of monolith structure)))
+- Special Microsoft VisualStudio 2022 Preview + Codieum AI used ;)
 
 ## Screenshot(s)
-![Sony Vaio](Images/shot01.png)
 
 ![Sony Vaio](Images/shot02.png)
 
 ![Sony Vaio](Images/shot03.png)
-
-![Sony Vaio](Images/shot05.png)
 
 ![Lumia 950](Images/shot07.png)
 
@@ -26,6 +24,7 @@ This is my experiment to run Monogame+MonolithEngine UWP app on/in W10M Astoria 
 - On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start)
 - Design folder added (use it via LDtk level editor)
 - Level 3 (Draft) added for my better game mechanics exploring ;)
+- AI only created GameWorld "template" with Load / Save methods at now :) 
 
 ## Requirements
 This app requires Visual Studio 2017/2019/2022 Community to run. [Click here to learn how to get set up with Visual Studio](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
@@ -55,6 +54,8 @@ Link: https://lajbert.itch.io/platformer-demo
 - Low gravity (Hyper-jumping). This is powered on only for game process debug symplify :)
 
 ## References
+
+https://codeium.com/ Codeium AI meta-system (Codeium VS Extension used to interact with my "c# coding process")
 
 https://github.com/Lajbert - Lajos Rajna aka Lajbert, the author of original MonolithEngine project
 

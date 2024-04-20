@@ -1,6 +1,4 @@
-﻿
-// Type: MonolithEngine.AnimationStateMachine
-
+﻿// Type: MonolithEngine.AnimationStateMachine
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

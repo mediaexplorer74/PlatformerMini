@@ -214,6 +214,7 @@
     <Compile Include="Engine\Util\ExtensionMethods.cs" />
     <Compile Include="Engine\Util\Flag.cs" />
     <Compile Include="Engine\Util\FrameCounter.cs" />
+    <Compile Include="Engine\Util\GameWorld.cs" />
     <Compile Include="Engine\Util\GridUtil.cs" />
     <Compile Include="Engine\Util\IAnimation.cs" />
     <Compile Include="Engine\Util\IColliderEntity.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Engine\Util\TileRenderMode.cs" />
     <Compile Include="Engine\Util\Timer.cs" />
     <Compile Include="Engine\Util\TypeEnum.cs" />
+    <Compile Include="Engine\Util\WorldClass.cs" />
     <Compile Include="Engine\Util\WorldLayout.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>

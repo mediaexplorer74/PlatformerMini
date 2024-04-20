@@ -318,12 +318,10 @@ namespace MonolithEngine
 
     public virtual void OnCollisionStart(IGameObject otherCollider)
     {
-            Debug.WriteLine("[i] OnCollisionStart info: " + otherCollider.ToString());
-        }
+    }
 
     public virtual void OnCollisionEnd(IGameObject otherCollider)
     {
-       Debug.WriteLine("[i] OnCollisionEnd info: " + otherCollider.ToString());
     }
 
     internal virtual void HandleCollisionStart(IGameObject otherCollider, bool allowOverlap)
