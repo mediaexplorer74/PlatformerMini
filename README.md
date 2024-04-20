@@ -17,7 +17,7 @@ This is my experiment to improve Monolith Engine via my experimental PlatformMin
 
 ## Features / My experimentation(s)
 - Min. Win. OS Build descreased to 10240 (Astoria Compatibility)
-- Not tweaked Monogame 3.8 library used (it reduces project size, but so many UI stranges)
+- My tweaked Monogame library used (it veery inflate project codebase, but gives some UI improvements)
 - On Lumia 950, app starts; On Lumia 640 it no operable without PC connected/debug mode :( On Lumia 640 "Astoria" project deployable but app no operable (failed on start)
 - Design folder added (use it via LDtk level editor)
 - Level 3 (Draft) added for my better game mechanics exploring ;)
